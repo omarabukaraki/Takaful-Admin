@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:takaful_admin1/core/utils/app_color.dart';
+import 'package:takaful_admin1/core/utils/app_colors.dart';
 
 class CustomTextFiled extends StatelessWidget {
   const CustomTextFiled(
@@ -20,7 +20,10 @@ class CustomTextFiled extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      padding: EdgeInsets.symmetric(
+        horizontal: MediaQuery.of(context).size.width / 5,
+        vertical: 10,
+      ),
       child: TextFormField(
         // ignore: body_might_complete_normally_nullable
         validator: (data) {
@@ -41,7 +44,7 @@ class CustomTextFiled extends StatelessWidget {
           hintText: hintText,
           hintStyle: const TextStyle(
             color: AppColor.kTextFiledFont,
-            fontSize: 15,
+            fontSize: 20,
           ),
           filled: true,
           fillColor: AppColor.kTextFiled,

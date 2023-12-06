@@ -1,7 +1,7 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:takaful_admin1/core/widget/custom_text_field.dart';
+import 'package:takaful_admin1/core/utils/app_colors.dart';
+import 'package:takaful_admin1/features/auth/presentation/view/login_page.dart';
 import 'package:takaful_admin1/firebase_options.dart';
 
 Future<void> main() async {
@@ -9,60 +9,24 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(const MyApp());
+  runApp(const TakafulAdmin());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class TakafulAdmin extends StatelessWidget {
+  const TakafulAdmin({super.key});
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  CollectionReference saveDonation =
-      FirebaseFirestore.instance.collection('save donation');
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        //app bar
-
-        appBar: AppBar(
-          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-          title: Text(widget.title),
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          fontFamily: 'ElMessiri',
+          colorScheme: ColorScheme.fromSeed(
+              seedColor: AppColor.kPrimary, background: Colors.white),
+          useMaterial3: true,
         ),
-        body: Center(
-          child: Column(
-            children: [
-              const CustomTextFiled(hintText: 'login'),
-              ElevatedButton(
-                  onPressed: () async {
-                    await saveDonation.add(
-                        {'donationId': 'dId from admin', 'userId': 'adminId'});
-                  },
-                  child: const Text('send save test')),
-            ],
-          ),
-        ));
+        home: const LoginPage());
   }
 }
-// test by omar 
