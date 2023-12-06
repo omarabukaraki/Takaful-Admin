@@ -57,7 +57,6 @@ class _MyHomePageState extends State<MyHomePage> {
                     .add({'donationId': 'dId from admin', 'userId': 'adminId'});
               },
               child: const Text('send save test')),
-        ) // This trailing comma makes auto-formatting nicer for build methods.
-        );
+        ));
   }
 }
