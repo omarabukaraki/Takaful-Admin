@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:takaful_admin1/core/widget/custom_text_field.dart';
 import 'package:takaful_admin1/firebase_options.dart';
 
 Future<void> main() async {
@@ -50,12 +51,17 @@ class _MyHomePageState extends State<MyHomePage> {
           title: Text(widget.title),
         ),
         body: Center(
-          child: ElevatedButton(
-              onPressed: () async {
-                await saveDonation
-                    .add({'donationId': 'dId from admin', 'userId': 'adminId'});
-              },
-              child: const Text('send save test')),
+          child: Column(
+            children: [
+              const CustomTextFiled(hintText: 'login'),
+              ElevatedButton(
+                  onPressed: () async {
+                    await saveDonation.add(
+                        {'donationId': 'dId from admin', 'userId': 'adminId'});
+                  },
+                  child: const Text('send save test')),
+            ],
+          ),
         ));
   }
 }
