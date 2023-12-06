@@ -55,9 +55,6 @@ class _MyHomePageState extends State<MyHomePage> {
               await saveDonation
                   .add({'donationId': 'dId from admin', 'userId': 'adminId'});
             },
-            child: const Text(
-              'send save test',
-              style: TextStyle(color: Colors.amber),
-            )));
+            child: const Text('send save test')));
   }
 }
