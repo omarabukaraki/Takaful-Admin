@@ -47,24 +47,14 @@ class _MyHomePageState extends State<MyHomePage> {
         //app bar
 
         appBar: AppBar(
-          // backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
           title: Text(widget.title),
         ),
-        body: Column(
-          children: [
-            ElevatedButton(
-                onPressed: () async {
-                  await saveDonation.add(
-                      {'donationId': 'dId from admin', 'userId': 'adminId'});
-                },
-                child: const Text('send save test')),
-            ElevatedButton(
-                onPressed: () async {
-                  await saveDonation.add(
-                      {'donationId': 'dId from admin', 'userId': 'adminId'});
-                },
-                child: const Text('send save test')),
-          ],
-        ));
+        body: ElevatedButton(
+            onPressed: () async {
+              await saveDonation
+                  .add({'donationId': 'dId from admin', 'userId': 'adminId'});
+            },
+            child: const Text('send save test')));
   }
 }
