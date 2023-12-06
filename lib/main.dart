@@ -58,14 +58,5 @@ class _MyHomePageState extends State<MyHomePage> {
               },
               child: const Text('send save test')),
         ));
-        body: ElevatedButton(
-            onPressed: () async {
-              await saveDonation
-                  .add({'donationId': 'dId from admin', 'userId': 'adminId'});
-            },
-            child: const Text(
-              'send save test',
-              style: TextStyle(backgroundColor: Colors.amber),
-            )));
   }
 }
