@@ -56,10 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 await saveDonation
                     .add({'donationId': 'dId from admin', 'userId': 'adminId'});
               },
-              child: const Text(
-                'send save test',
-                style: TextStyle(fontSize: 12),
-              )),
+              child: const Text('send save test')),
         ) // This trailing comma makes auto-formatting nicer for build methods.
         );
   }
