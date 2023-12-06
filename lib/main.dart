@@ -47,7 +47,7 @@ class _MyHomePageState extends State<MyHomePage> {
         //app bar
 
         appBar: AppBar(
-          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+          // backgroundColor: Theme.of(context).colorScheme.inversePrimary,
           title: Text(widget.title),
         ),
         body: ElevatedButton(
