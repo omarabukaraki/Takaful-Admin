@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class dataBase extends StatelessWidget {
-  const dataBase({super.key});
+class DataBase extends StatelessWidget {
+  const DataBase({super.key});
 
   @override
   Widget build(BuildContext context) {
