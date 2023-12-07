@@ -67,4 +67,5 @@ abstract class AppString {
   static const String textManageApplication = 'إدارة التطبيق';
   static const String textAddCategory = 'إضافة قسم';
   static const String textAnalitices = 'الإحصائيات';
+  static const String textSearchInPosts = 'إبحث في التبرعات';
 }
