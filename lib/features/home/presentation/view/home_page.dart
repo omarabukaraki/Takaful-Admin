@@ -27,6 +27,7 @@ class _HomePageState extends State<HomePage> {
     GenerateAnaliticesPage(),
   ];
   int index = 5;
+  String appBarTitle = 'الإحصائيات';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,10 +41,11 @@ class _HomePageState extends State<HomePage> {
             SizedBox(
               width: MediaQuery.of(context).size.width -
                   MediaQuery.of(context).size.width / 4,
-              child: const Center(
+              child: Center(
                 child: Text(
-                  'الإحصائيات',
-                  style: TextStyle(fontSize: 32, color: AppColor.kPrimary),
+                  appBarTitle,
+                  style:
+                      const TextStyle(fontSize: 32, color: AppColor.kPrimary),
                 ),
               ),
             ),
@@ -98,6 +100,7 @@ class _HomePageState extends State<HomePage> {
                   onTap: () {
                     setState(() {
                       index = 0;
+                      appBarTitle = AppString.textManageUserPosts;
                     });
                   },
                   title: AppString.textManageUserPosts,
@@ -108,6 +111,7 @@ class _HomePageState extends State<HomePage> {
                   onTap: () {
                     setState(() {
                       index = 1;
+                      appBarTitle = AppString.textSendNotiToUsers;
                     });
                   },
                   title: AppString.textSendNotiToUsers,
@@ -118,6 +122,7 @@ class _HomePageState extends State<HomePage> {
                   onTap: () {
                     setState(() {
                       index = 2;
+                      appBarTitle = AppString.textBanUser;
                     });
                   },
                   title: AppString.textBanUser,
@@ -128,6 +133,7 @@ class _HomePageState extends State<HomePage> {
                   onTap: () {
                     setState(() {
                       index = 3;
+                      appBarTitle = AppString.textDeletePost;
                     });
                   },
                   title: AppString.textDeletePost,
@@ -144,6 +150,7 @@ class _HomePageState extends State<HomePage> {
                   onTap: () {
                     setState(() {
                       index = 4;
+                      appBarTitle = AppString.textAddCategory;
                     });
                   },
                   title: AppString.textAddCategory,
@@ -154,6 +161,7 @@ class _HomePageState extends State<HomePage> {
                   onTap: () {
                     setState(() {
                       index = 5;
+                      appBarTitle = AppString.textAnalitices;
                     });
                   },
                   title: AppString.textAnalitices,
