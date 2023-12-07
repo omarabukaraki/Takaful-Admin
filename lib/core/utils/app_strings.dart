@@ -57,4 +57,14 @@ abstract class AppString {
   static const String textInformation = 'المعلومات';
   static const String textAdvertiser = 'صاحب الإعلان';
   static const String textRequired = 'مطلوب';
+
+  //Takaful Admin
+  static const String textManageUsers = 'إدارة المستخدمين';
+  static const String textManageUserPosts = 'إدارة إعلانات المستخدم';
+  static const String textSendNotiToUsers = 'إرسال اشعار للمستخدمين';
+  static const String textBanUser = 'حظر المستخدم';
+  static const String textDeletePost = 'حذف الإعلان';
+  static const String textManageApplication = 'إدارة التطبيق';
+  static const String textAddCategory = 'إضافة قسم';
+  static const String textAnalitices = 'الإحصائيات';
 }

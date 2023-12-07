@@ -4,6 +4,7 @@ import 'package:takaful_admin1/core/utils/app_strings.dart';
 import 'package:takaful_admin1/core/widget/custom_button.dart';
 import 'package:takaful_admin1/core/widget/custom_text_field.dart';
 import 'package:takaful_admin1/core/widget/logo_takaful.dart';
+import 'package:takaful_admin1/features/home/presentation/view/home_page.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -43,7 +44,11 @@ class LoginPage extends StatelessWidget {
             text: AppString.textSginINArabic,
             color: AppColor.kPrimary,
             textColor: AppColor.kTextFiled,
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                return const HomePage();
+              }));
+            },
           )
         ],
       ),
