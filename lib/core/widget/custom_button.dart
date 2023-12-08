@@ -8,19 +8,21 @@ class CustomButton extends StatelessWidget {
       this.color,
       this.textColor,
       required this.text,
-      required this.onTap});
+      required this.onTap,
+      this.horizontalPadding = 5});
   final Color? color;
   final Color? textColor;
   final String text;
   final VoidCallback onTap;
   final double? circular;
+  final double horizontalPadding;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
       child: Padding(
         padding: EdgeInsets.symmetric(
-          horizontal: MediaQuery.of(context).size.width / 5,
+          horizontal: MediaQuery.of(context).size.width / horizontalPadding,
           vertical: 40,
         ),
         child: Container(

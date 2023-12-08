@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:takaful_admin1/core/utils/app_colors.dart';
 import 'package:takaful_admin1/core/utils/app_strings.dart';
-import 'package:takaful_admin1/features/send_message/presentation/view/widgets/custom_button.dart';
-import 'package:takaful_admin1/features/send_message/presentation/view/widgets/custom_text_field.dart';
+import 'package:takaful_admin1/core/widget/custom_button.dart';
+import 'package:takaful_admin1/core/widget/custom_text_field.dart';
 
 class SendMessagePage extends StatelessWidget {
   const SendMessagePage({super.key});
@@ -20,15 +20,18 @@ class SendMessagePage extends StatelessWidget {
           ),
           const CustomTextFiled(
             hintText: AppString.textNotiTitle,
+            horizontalPadding: double.infinity,
           ),
           const CustomTextFiled(
             hintText: AppString.textNotiDescription,
+            horizontalPadding: double.infinity,
             maxLines: 12,
           ),
           CustomButton(
             color: AppColor.kPrimary,
             textColor: AppColor.kWhite,
             text: AppString.textSendNoti,
+            horizontalPadding: double.infinity,
             onTap: () {},
           )
         ],

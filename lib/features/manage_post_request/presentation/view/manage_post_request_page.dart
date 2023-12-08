@@ -27,7 +27,7 @@ class ManagePostReqPage extends StatelessWidget {
                   return const DonationComponent();
                 },
               ),
-            )
+            ),
           ],
         ),
       ),
