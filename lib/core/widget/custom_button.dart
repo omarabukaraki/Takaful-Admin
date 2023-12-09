@@ -23,7 +23,7 @@ class CustomButton extends StatelessWidget {
       child: Padding(
         padding: EdgeInsets.symmetric(
           horizontal: MediaQuery.of(context).size.width / horizontalPadding,
-          vertical: 40,
+          vertical: 10,
         ),
         child: Container(
           width: double.infinity,

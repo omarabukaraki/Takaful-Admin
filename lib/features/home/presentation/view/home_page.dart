@@ -6,7 +6,8 @@ import 'package:takaful_admin1/features/ban_user/presentation/view/ban_user_page
 import 'package:takaful_admin1/features/delete_post/presentation/view/delete_post_page.dart';
 import 'package:takaful_admin1/features/generate_analitices/presentation/view/generate_analitices_page.dart';
 import 'package:takaful_admin1/features/home/presentation/view/widgets/custom_list_tile.dart';
-import 'package:takaful_admin1/features/manage_post_request/presentation/view/manage_post_request_page.dart';
+import 'package:takaful_admin1/features/manage_post_request/presentation/views/manage_post_request_page.dart';
+import 'package:takaful_admin1/features/manage_post_request/presentation/views/post_details_page.dart';
 
 import '../../../send_message/presentation/view/send_message_page.dart';
 
@@ -75,10 +76,11 @@ class _HomePageState extends State<HomePage> {
       body: Row(
         children: [
           SizedBox(
-            width: MediaQuery.of(context).size.width -
-                MediaQuery.of(context).size.width / 4,
-            child: screen[index],
-          ),
+              width: MediaQuery.of(context).size.width -
+                  MediaQuery.of(context).size.width / 4,
+              child: const PostPage()
+              // screen[index],
+              ),
           Drawer(
             width: MediaQuery.of(context).size.width / 4,
             shape: const ContinuousRectangleBorder(
