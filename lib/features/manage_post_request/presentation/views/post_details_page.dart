@@ -22,143 +22,152 @@ class _PostPageState extends State<PostPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Padding(
-      padding: const EdgeInsets.all(30.0),
-      child: Column(
-        children: [
-          SizedBox(
-            height: MediaQuery.of(context).size.height / 3,
-            child: Row(
-              children: [
-                Expanded(
-                  flex: 8,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text(
-                        //widget.donationModel!.title,
-                        'متبرع لصيانة مسجد في عمان متبرع لصيانة مسجد في عمانمتبرع لصيانة مسجد في عمان',
-                        style: TextStyle(
-                          fontSize: 20,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        textAlign: TextAlign.end,
-                        maxLines: 2,
-                      ),
-                      PostDetailsButton(
-                        text: 'نشر الإعلان',
-                        onTap: () {},
-                        color: AppColor.kPrimary,
-                        textColor: AppColor.kWhite,
-                      ),
-                      PostDetailsButton(
-                        text: 'رفض النشر',
-                        onTap: () {},
-                        color: AppColor.kRed,
-                        textColor: AppColor.kWhite,
-                      )
-                    ],
-                  ),
-                ),
-                const Expanded(child: SizedBox()),
-                Expanded(
-                  flex: 8,
-                  child: Container(
-                    height: double.infinity,
-                    clipBehavior: Clip.antiAlias,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    child: Stack(
-                      children: [
-                        CarouselSlider.builder(
-                          itemCount: 3,
-                          itemBuilder: (context, index, realIndex) {
-                            return const PostDetailsImage(
-                              image:
-                                  'https://www.cnet.com/a/img/resize/69256d2623afcbaa911f08edc45fb2d3f6a8e172/hub/2023/02/03/afedd3ee-671d-4189-bf39-4f312248fb27/gettyimages-1042132904.jpg?auto=webp&fit=crop&height=675&width=1200',
-                            );
-                          },
-                          carouselController: _controller,
-                          options: CarouselOptions(
-                            height: double.infinity,
-                            viewportFraction: 1,
-                            onPageChanged: (index, reason) {
-                              setState(() {
-                                inIndex = index;
-                              });
-                            },
-                          ),
-                        ),
-                        ImageCountAndFullCount(
-                          countImage: inIndex + 1,
-                          fullCountImage: 3,
-                          height: 25,
-                        ),
-                        Positioned(
-                          top: 100,
-                          left: 0,
-                          child: IconButton(
-                            icon: const Icon(Icons.arrow_back_ios),
-                            onPressed: () {
-                              _controller.previousPage();
-                            },
-                          ),
-                        ),
-                        Positioned(
-                          top: 100,
-                          right: 0,
-                          child: IconButton(
-                            icon: const Icon(Icons.arrow_forward_ios),
-                            onPressed: () {
-                              _controller.nextPage();
-                            },
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                )
-              ],
-            ),
+        appBar: AppBar(
+          title: const Text(
+            'الإعلان',
+            style: TextStyle(fontSize: 32, color: AppColor.kPrimary),
           ),
-          SizedBox(
-              height: MediaQuery.of(context).size.height / 4,
-              child: const PostDetailsInformation()),
-          SizedBox(
-            height: MediaQuery.of(context).size.height / 4,
-            child: const Row(
-              children: [
-                Expanded(
-                  flex: 8,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      TitleDonationDetailsPage(
-                        text: 'حساب المتبرع',
+          centerTitle: true,
+          backgroundColor: AppColor.kWhite,
+          automaticallyImplyLeading: false,
+        ),
+        body: Padding(
+          padding: const EdgeInsets.all(30.0),
+          child: Column(
+            children: [
+              SizedBox(
+                height: MediaQuery.of(context).size.height / 3,
+                child: Row(
+                  children: [
+                    Expanded(
+                      flex: 8,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Text(
+                            //widget.donationModel!.title,
+                            'متبرع لصيانة مسجد في عمان متبرع لصيانة مسجد في عمانمتبرع لصيانة مسجد في عمان',
+                            style: TextStyle(
+                              fontSize: 20,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            textAlign: TextAlign.end,
+                            maxLines: 2,
+                          ),
+                          PostDetailsButton(
+                            text: 'نشر الإعلان',
+                            onTap: () {},
+                            color: AppColor.kPrimary,
+                            textColor: AppColor.kWhite,
+                          ),
+                          PostDetailsButton(
+                            text: 'رفض النشر',
+                            onTap: () {},
+                            color: AppColor.kRed,
+                            textColor: AppColor.kWhite,
+                          )
+                        ],
                       ),
-                      DonarAccountBox(),
-                    ],
-                  ),
-                ),
-                Expanded(child: SizedBox()),
-                Expanded(
-                    flex: 8,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        TitleDonationDetailsPage(
-                          text: 'الوصف',
+                    ),
+                    const Expanded(child: SizedBox()),
+                    Expanded(
+                      flex: 8,
+                      child: Container(
+                        height: double.infinity,
+                        clipBehavior: Clip.antiAlias,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(30),
                         ),
-                        DescriptionBox(),
-                      ],
-                    ))
-              ],
-            ),
-          )
-        ],
-      ),
-    ));
+                        child: Stack(
+                          children: [
+                            CarouselSlider.builder(
+                              itemCount: 3,
+                              itemBuilder: (context, index, realIndex) {
+                                return const PostDetailsImage(
+                                  image:
+                                      'https://www.cnet.com/a/img/resize/69256d2623afcbaa911f08edc45fb2d3f6a8e172/hub/2023/02/03/afedd3ee-671d-4189-bf39-4f312248fb27/gettyimages-1042132904.jpg?auto=webp&fit=crop&height=675&width=1200',
+                                );
+                              },
+                              carouselController: _controller,
+                              options: CarouselOptions(
+                                height: double.infinity,
+                                viewportFraction: 1,
+                                onPageChanged: (index, reason) {
+                                  setState(() {
+                                    inIndex = index;
+                                  });
+                                },
+                              ),
+                            ),
+                            ImageCountAndFullCount(
+                              countImage: inIndex + 1,
+                              fullCountImage: 3,
+                              height: 25,
+                            ),
+                            Positioned(
+                              top: 100,
+                              left: 0,
+                              child: IconButton(
+                                icon: const Icon(Icons.arrow_back_ios),
+                                onPressed: () {
+                                  _controller.previousPage();
+                                },
+                              ),
+                            ),
+                            Positioned(
+                              top: 100,
+                              right: 0,
+                              child: IconButton(
+                                icon: const Icon(Icons.arrow_forward_ios),
+                                onPressed: () {
+                                  _controller.nextPage();
+                                },
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              SizedBox(
+                  height: MediaQuery.of(context).size.height / 4,
+                  child: const PostDetailsInformation()),
+              SizedBox(
+                height: MediaQuery.of(context).size.height / 4,
+                child: const Row(
+                  children: [
+                    Expanded(
+                      flex: 8,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          TitleDonationDetailsPage(
+                            text: 'حساب المتبرع',
+                          ),
+                          DonarAccountBox(),
+                        ],
+                      ),
+                    ),
+                    Expanded(child: SizedBox()),
+                    Expanded(
+                        flex: 8,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            TitleDonationDetailsPage(
+                              text: 'الوصف',
+                            ),
+                            DescriptionBox(),
+                          ],
+                        ))
+                  ],
+                ),
+              )
+            ],
+          ),
+        ));
   }
 }

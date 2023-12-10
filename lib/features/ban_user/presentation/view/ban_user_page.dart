@@ -14,7 +14,7 @@ class BanUserPage extends StatelessWidget {
         child: Column(
           children: [
             const CustomSearchBar(
-                hintText: AppString.textSearchInPosts,
+                hintText: AppString.textSearchInUsers,
                 icon: Icon(Icons.search)),
             Expanded(
               child: GridView.builder(

@@ -23,6 +23,7 @@ class SendMessagePage extends StatelessWidget {
             horizontalPadding: double.infinity,
           ),
           const CustomTextFiled(
+            paddingVertical: 20,
             hintText: AppString.textNotiDescription,
             horizontalPadding: double.infinity,
             maxLines: 12,

@@ -72,4 +72,5 @@ abstract class AppString {
   static const String textNotiTitle = 'عنوان الإشعار';
   static const String textNotiDescription = 'وصف الإشعار';
   static const String textSendNoti = 'إرسال الإشعار';
+  static const String textSearchInUsers = 'إبحث في المستخدمين';
 }

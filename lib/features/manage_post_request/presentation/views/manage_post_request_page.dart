@@ -26,10 +26,28 @@ class ManagePostReqPage extends StatelessWidget {
                     itemCount: 8,
                     itemBuilder: (context, index) {
                       return DonationComponent(onTapRequest: () {
-                        Navigator.of(context)
-                            .push(MaterialPageRoute(builder: (context) {
-                          return const PostPage();
-                        }));
+                        // Navigator.of(context)
+                        //     .push(MaterialPageRoute(builder: (context) {
+                        //   return const PostPage();
+
+                        // }));
+                        showDialog(
+                          barrierColor: Colors.transparent,
+                          context: context,
+                          builder: (context) => Row(
+                            children: [
+                              Container(
+                                color: Colors.amber,
+                                width: MediaQuery.of(context).size.width -
+                                    MediaQuery.of(context).size.width / 4,
+                                child: const PostPage(),
+                              ),
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width / 4,
+                              ),
+                            ],
+                          ),
+                        );
                       });
                     },
                   ),

@@ -11,7 +11,8 @@ class CustomTextFiled extends StatelessWidget {
       this.typeKeyboardNumber,
       this.controller,
       this.horizontalPadding = 5,
-      this.maxLines = 1});
+      this.maxLines = 1,
+      this.paddingVertical = 10});
   final String? hintText;
   final Function(String)? onChanged;
   final bool typeText;
@@ -20,13 +21,14 @@ class CustomTextFiled extends StatelessWidget {
   final TextEditingController? controller;
   final double horizontalPadding;
   final int maxLines;
+  final double paddingVertical;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(
         horizontal: MediaQuery.of(context).size.width / horizontalPadding,
-        vertical: 10,
+        vertical: paddingVertical,
       ),
       child: TextFormField(
         // ignore: body_might_complete_normally_nullable
@@ -50,7 +52,7 @@ class CustomTextFiled extends StatelessWidget {
           hintText: hintText,
           hintStyle: const TextStyle(
             color: AppColor.kTextFiledFont,
-            fontSize: 20,
+            fontSize: 26,
           ),
           filled: true,
           fillColor: AppColor.kTextFiled,
