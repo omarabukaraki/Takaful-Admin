@@ -9,40 +9,43 @@ class PostDetailsInformation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Row(
-      children: [
-        Expanded(
-          flex: 8,
-          child: Column(
-            children: [
-              SizedBox(
-                height: 27,
-              ),
-              PostDetailsInformationComponent(),
-              PostDetailsInformationComponent()
-            ],
+    return const Padding(
+      padding: EdgeInsets.only(top: 25.0),
+      child: Row(
+        children: [
+          Expanded(
+            flex: 8,
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 27,
+                ),
+                PostDetailsInformationComponent(),
+                PostDetailsInformationComponent()
+              ],
+            ),
           ),
-        ),
-        Expanded(child: SizedBox()),
-        Expanded(
-          flex: 8,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  TitleDonationDetailsPage(
-                    text: 'المعلومات',
-                  ),
-                ],
-              ),
-              PostDetailsInformationComponent(),
-              PostDetailsInformationComponent(),
-            ],
-          ),
-        )
-      ],
+          Expanded(child: SizedBox()),
+          Expanded(
+            flex: 8,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    TitleDonationDetailsPage(
+                      text: 'المعلومات',
+                    ),
+                  ],
+                ),
+                PostDetailsInformationComponent(),
+                PostDetailsInformationComponent(),
+              ],
+            ),
+          )
+        ],
+      ),
     );
   }
 }

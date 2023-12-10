@@ -26,8 +26,8 @@ class _PostPageState extends State<PostPage> {
       padding: const EdgeInsets.all(30.0),
       child: Column(
         children: [
-          Expanded(
-            flex: 5,
+          SizedBox(
+            height: MediaQuery.of(context).size.height / 3,
             child: Row(
               children: [
                 Expanded(
@@ -123,38 +123,40 @@ class _PostPageState extends State<PostPage> {
               ],
             ),
           ),
-          const Expanded(child: SizedBox()),
-          const Expanded(flex: 4, child: PostDetailsInformation()),
-          const Expanded(
-              flex: 4,
-              child: Row(
-                children: [
-                  Expanded(
+          SizedBox(
+              height: MediaQuery.of(context).size.height / 4,
+              child: const PostDetailsInformation()),
+          SizedBox(
+            height: MediaQuery.of(context).size.height / 4,
+            child: const Row(
+              children: [
+                Expanded(
+                  flex: 8,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      TitleDonationDetailsPage(
+                        text: 'حساب المتبرع',
+                      ),
+                      DonarAccountBox(),
+                    ],
+                  ),
+                ),
+                Expanded(child: SizedBox()),
+                Expanded(
                     flex: 8,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         TitleDonationDetailsPage(
-                          text: 'حساب المتبرع',
+                          text: 'الوصف',
                         ),
-                        DonarAccountBox(),
+                        DescriptionBox(),
                       ],
-                    ),
-                  ),
-                  Expanded(child: SizedBox()),
-                  Expanded(
-                      flex: 8,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          TitleDonationDetailsPage(
-                            text: 'الوصف',
-                          ),
-                          DescriptionBox(),
-                        ],
-                      ))
-                ],
-              ))
+                    ))
+              ],
+            ),
+          )
         ],
       ),
     ));
