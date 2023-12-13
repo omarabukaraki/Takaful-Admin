@@ -43,6 +43,7 @@ class CustomTextFiled extends StatelessWidget {
             : TextInputType.text,
         obscureText: typeText,
         maxLines: maxLines,
+        style: const TextStyle(fontSize: 20),
         controller: controller,
         onChanged: onChanged,
         textAlign: TextAlign.end,

@@ -93,6 +93,7 @@ class _LoginPageState extends State<LoginPage> {
                   },
                 ),
                 CustomTextFiled(
+                  typeText: true,
                   hintText: AppString.textPasswordArabic,
                   onChanged: (userPassword) {
                     password.text = userPassword;
