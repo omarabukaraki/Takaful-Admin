@@ -34,7 +34,7 @@ class CustomTextFiled extends StatelessWidget {
         // ignore: body_might_complete_normally_nullable
         validator: (data) {
           if (data!.isEmpty) {
-            return 'الحقل مطلوب'.padLeft(86);
+            return 'الحقل مطلوب'.padLeft(200);
           }
         },
 
