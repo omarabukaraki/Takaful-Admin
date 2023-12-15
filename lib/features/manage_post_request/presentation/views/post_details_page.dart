@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:takaful_admin1/core/utils/app_colors.dart';
+import 'package:takaful_admin1/features/manage_post_request/data/post_model.dart';
 import 'package:takaful_admin1/features/manage_post_request/presentation/views/widgets/post_details_widget/description_box.dart';
 import 'package:takaful_admin1/features/manage_post_request/presentation/views/widgets/post_details_widget/doner_account_box.dart';
 import 'package:takaful_admin1/features/manage_post_request/presentation/views/widgets/post_details_widget/image_count_and_full_count.dart';
@@ -10,8 +11,8 @@ import 'package:takaful_admin1/features/manage_post_request/presentation/views/w
 import 'package:takaful_admin1/features/manage_post_request/presentation/views/widgets/post_details_widget/title_post_details_page.dart';
 
 class PostPage extends StatefulWidget {
-  const PostPage({super.key});
-
+  const PostPage({super.key, required this.post});
+  final PostModel post;
   @override
   State<PostPage> createState() => _PostPageState();
 }
@@ -23,6 +24,7 @@ class _PostPageState extends State<PostPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          surfaceTintColor: Colors.transparent,
           title: const Text(
             'الإعلان',
             style: TextStyle(fontSize: 32, color: AppColor.kPrimary),
@@ -44,10 +46,10 @@ class _PostPageState extends State<PostPage> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const Text(
-                            //widget.donationModel!.title,
-                            'متبرع لصيانة مسجد في عمان متبرع لصيانة مسجد في عمانمتبرع لصيانة مسجد في عمان',
-                            style: TextStyle(
+                          Text(
+                            widget.post.title!,
+                            // 'متبرع لصيانة مسجد في عمان متبرع لصيانة مسجد في عمانمتبرع لصيانة مسجد في عمان',
+                            style: const TextStyle(
                               fontSize: 20,
                               color: Colors.black,
                               fontWeight: FontWeight.bold,
@@ -82,11 +84,10 @@ class _PostPageState extends State<PostPage> {
                         child: Stack(
                           children: [
                             CarouselSlider.builder(
-                              itemCount: 3,
+                              itemCount: widget.post.image!.length,
                               itemBuilder: (context, index, realIndex) {
-                                return const PostDetailsImage(
-                                  image:
-                                      'https://www.cnet.com/a/img/resize/69256d2623afcbaa911f08edc45fb2d3f6a8e172/hub/2023/02/03/afedd3ee-671d-4189-bf39-4f312248fb27/gettyimages-1042132904.jpg?auto=webp&fit=crop&height=675&width=1200',
+                                return PostDetailsImage(
+                                  image: widget.post.image![index],
                                 );
                               },
                               carouselController: _controller,
@@ -102,7 +103,7 @@ class _PostPageState extends State<PostPage> {
                             ),
                             ImageCountAndFullCount(
                               countImage: inIndex + 1,
-                              fullCountImage: 3,
+                              fullCountImage: widget.post.image!.length,
                               height: 25,
                             ),
                             Positioned(
@@ -134,12 +135,12 @@ class _PostPageState extends State<PostPage> {
               ),
               SizedBox(
                   height: MediaQuery.of(context).size.height / 4,
-                  child: const PostDetailsInformation()),
+                  child: PostDetailsInformation(post: widget.post)),
               SizedBox(
                 height: MediaQuery.of(context).size.height / 4,
-                child: const Row(
+                child: Row(
                   children: [
-                    Expanded(
+                    const Expanded(
                       flex: 8,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.end,
@@ -151,16 +152,18 @@ class _PostPageState extends State<PostPage> {
                         ],
                       ),
                     ),
-                    Expanded(child: SizedBox()),
+                    const Expanded(child: SizedBox()),
                     Expanded(
                         flex: 8,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
-                            TitleDonationDetailsPage(
+                            const TitleDonationDetailsPage(
                               text: 'الوصف',
                             ),
-                            DescriptionBox(),
+                            DescriptionBox(
+                              postDescription: widget.post.description!,
+                            ),
                           ],
                         ))
                   ],

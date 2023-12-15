@@ -27,7 +27,7 @@ class PostDetailsInformationComponent extends StatelessWidget {
           color: Colors.white),
       child: Row(children: [
         Expanded(
-            flex: 1,
+            flex: 2,
             child: Text(
               data ?? 'الاستهلاكيات - الطعام',
               textAlign: TextAlign.end,

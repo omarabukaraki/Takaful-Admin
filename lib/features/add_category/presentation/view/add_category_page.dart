@@ -1,113 +1,171 @@
+import 'package:blurry_modal_progress_hud/blurry_modal_progress_hud.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:takaful_admin1/core/utils/app_colors.dart';
 import 'package:takaful_admin1/core/utils/app_strings.dart';
+import 'package:takaful_admin1/features/add_category/data/category_model.dart';
+import 'package:takaful_admin1/features/add_category/presentation/cubit/get_item_category_cubit/get_item_category_cubit.dart';
+import 'package:takaful_admin1/features/add_category/presentation/cubit/get_item_category_cubit/get_item_category_state.dart';
+import 'package:takaful_admin1/features/add_category/presentation/cubit/get_service_category_cubit/get_service_category_cubit.dart';
+import 'package:takaful_admin1/features/add_category/presentation/cubit/get_service_category_cubit/get_service_category_state.dart';
 import 'package:takaful_admin1/features/add_category/presentation/view/widget/category_menu.dart';
 import 'package:takaful_admin1/features/add_category/presentation/view/widget/title_add_category_page.dart';
 
-class AddCategoryPage extends StatelessWidget {
+class AddCategoryPage extends StatefulWidget {
   const AddCategoryPage({super.key});
 
   @override
+  State<AddCategoryPage> createState() => _AddCategoryPageState();
+}
+
+class _AddCategoryPageState extends State<AddCategoryPage> {
+  @override
+  void initState() {
+    super.initState();
+    BlocProvider.of<GetServiceCategoryCubit>(context).getServiceCategories();
+    BlocProvider.of<GetItemCategoryCubit>(context).getItemCategories();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Padding(
-        padding: const EdgeInsets.only(top: 30.0, right: 30, left: 30),
+        padding: EdgeInsets.only(top: 30.0, right: 30, left: 30),
         child: Row(
           children: [
+            ServiceCategories(),
             Expanded(
-              flex: 5,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  const TitleAddCategoryPage(
-                    text: AppString.textServices,
-                  ),
-                  Expanded(
-                    child: ListView(
-                      children: const [
-                        CategoryMenu(
-                          image:
-                              'https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-                          text: 'تجربة',
-                        ),
-                        CategoryMenu(
-                          image:
-                              'https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-                          text: 'تجربة',
-                        ),
-                        CategoryMenu(
-                          image:
-                              'https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-                          text: 'تجربة',
-                        ),
-                        CategoryMenu(
-                          image:
-                              'https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-                          text: 'تجربة',
-                        ),
-                        CategoryMenu(
-                          image:
-                              'https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-                          text: 'تجربة',
-                        )
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            const Expanded(
               child: VerticalDivider(
                 thickness: 0.5,
                 indent: 70,
                 endIndent: 15,
               ),
             ),
-            Expanded(
-              flex: 5,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  const TitleAddCategoryPage(
-                    text: AppString.textItems,
-                  ),
-                  Expanded(
-                    child: ListView(
-                      children: const [
-                        CategoryMenu(
-                          image:
-                              'https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-                          text: 'تجربة',
-                        ),
-                        CategoryMenu(
-                          image:
-                              'https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-                          text: 'تجربة',
-                        ),
-                        CategoryMenu(
-                          image:
-                              'https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-                          text: 'تجربة',
-                        ),
-                        CategoryMenu(
-                          image:
-                              'https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-                          text: 'تجربة',
-                        ),
-                        CategoryMenu(
-                          image:
-                              'https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-                          text: 'تجربة',
-                        ),
-                        CategoryMenu(),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            ItemCategories(),
           ],
         ),
       ),
+    );
+  }
+}
+
+class ServiceCategories extends StatefulWidget {
+  const ServiceCategories({super.key});
+
+  @override
+  State<ServiceCategories> createState() => _ServiceCategoriesState();
+}
+
+class _ServiceCategoriesState extends State<ServiceCategories> {
+  bool isLoding = false;
+
+  List<CategoryModel> categories = [];
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocConsumer<GetServiceCategoryCubit, GetServiceCategoryState>(
+      listener: (context, state) {
+        if (state is GetServiceCategoryLodingState) {
+          isLoding = true;
+        } else if (state is GetServiceCategorySeccState) {
+          categories = state.categoryList;
+          isLoding = false;
+        } else if (state is GetServiceCategoryFaliuerState) {
+          isLoding = false;
+        }
+      },
+      builder: (context, state) {
+        return Expanded(
+          flex: 5,
+          child: BlurryModalProgressHUD(
+            inAsyncCall: isLoding,
+            progressIndicator:
+                const SpinKitFadingCircle(color: AppColor.kPrimary, size: 90.0),
+            dismissible: false,
+            opacity: 0.4,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                const TitleAddCategoryPage(
+                  text: AppString.textServices,
+                ),
+                Expanded(
+                  child: ListView.builder(
+                    itemCount: categories.length,
+                    itemBuilder: (context, index) {
+                      return CategoryMenu(
+                        type: 'service category',
+                        categoryModel: categories[index],
+                      );
+                    },
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
+
+class ItemCategories extends StatefulWidget {
+  const ItemCategories({super.key});
+
+  @override
+  State<ItemCategories> createState() => _ItemCategoriesState();
+}
+
+class _ItemCategoriesState extends State<ItemCategories> {
+  bool isLodingItem = false;
+
+  List<CategoryModel> categories = [];
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocConsumer<GetItemCategoryCubit, GetItemCategoryState>(
+      listener: (context, state) {
+        if (state is GetItemCategoryLodingState) {
+          isLodingItem = true;
+        } else if (state is GetItemCategorySeccState) {
+          categories = state.categoryList;
+          isLodingItem = false;
+        } else if (state is GetItemCategoryFaliuerState) {
+          isLodingItem = false;
+        }
+      },
+      builder: (context, state) {
+        return Expanded(
+          flex: 5,
+          child: BlurryModalProgressHUD(
+            inAsyncCall: isLodingItem,
+            progressIndicator:
+                const SpinKitFadingCircle(color: AppColor.kPrimary, size: 90.0),
+            dismissible: false,
+            opacity: 0.4,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                const TitleAddCategoryPage(
+                  text: AppString.textItems,
+                ),
+                Expanded(
+                  child: ListView.builder(
+                    itemCount: categories.length,
+                    itemBuilder: (context, index) {
+                      return CategoryMenu(
+                        type: 'category',
+                        categoryModel: categories[index],
+                      );
+                    },
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 }

@@ -2,8 +2,12 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:takaful_admin1/core/utils/app_colors.dart';
+import 'package:takaful_admin1/features/add_category/presentation/cubit/add_category_cubit/add_category_cubit.dart';
+import 'package:takaful_admin1/features/add_category/presentation/cubit/get_item_category_cubit/get_item_category_cubit.dart';
+import 'package:takaful_admin1/features/add_category/presentation/cubit/get_service_category_cubit/get_service_category_cubit.dart';
 import 'package:takaful_admin1/features/auth/presentation/login_cubit/login_cubit.dart';
-import 'package:takaful_admin1/features/auth/presentation/view/login_page.dart';
+import 'package:takaful_admin1/features/home/presentation/view/home_page.dart';
+import 'package:takaful_admin1/features/manage_post_request/presentation/views/get_post_cubit/get_post_cubit.dart';
 import 'package:takaful_admin1/firebase_options.dart';
 
 Future<void> main() async {
@@ -20,8 +24,14 @@ class TakafulAdmin extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => LoginCubit(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => LoginCubit()),
+        BlocProvider(create: (context) => GetServiceCategoryCubit()),
+        BlocProvider(create: (context) => GetItemCategoryCubit()),
+        BlocProvider(create: (context) => AddCategoryCubit()),
+        BlocProvider(create: (context) => GetPostCubit()),
+      ],
       child: MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Flutter Demo',
@@ -31,7 +41,7 @@ class TakafulAdmin extends StatelessWidget {
                 seedColor: AppColor.kPrimary, background: Colors.white),
             useMaterial3: true,
           ),
-          home: const LoginPage()),
+          home: const HomePage()),
     );
   }
 }

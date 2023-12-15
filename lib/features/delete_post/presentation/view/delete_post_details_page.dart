@@ -2,12 +2,10 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:takaful_admin1/core/utils/app_colors.dart';
 import 'package:takaful_admin1/core/widget/custom_text_field.dart';
-import 'package:takaful_admin1/features/manage_post_request/presentation/views/widgets/post_details_widget/description_box.dart';
 import 'package:takaful_admin1/features/manage_post_request/presentation/views/widgets/post_details_widget/doner_account_box.dart';
 import 'package:takaful_admin1/features/manage_post_request/presentation/views/widgets/post_details_widget/image_count_and_full_count.dart';
 import 'package:takaful_admin1/features/manage_post_request/presentation/views/widgets/post_details_widget/post_details_button.dart';
 import 'package:takaful_admin1/features/manage_post_request/presentation/views/widgets/post_details_widget/post_details_image.dart';
-import 'package:takaful_admin1/features/manage_post_request/presentation/views/widgets/post_details_widget/post_details_information.dart';
 import 'package:takaful_admin1/features/manage_post_request/presentation/views/widgets/post_details_widget/title_post_details_page.dart';
 
 class DeletePostDetailsPage extends StatefulWidget {
@@ -24,6 +22,7 @@ class _PostPageState extends State<DeletePostDetailsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          surfaceTintColor: Colors.transparent,
           centerTitle: true,
           automaticallyImplyLeading: false,
           title: const Text(
@@ -147,8 +146,9 @@ class _PostPageState extends State<DeletePostDetailsPage> {
                   ),
                 ),
                 SizedBox(
-                    height: MediaQuery.of(context).size.height / 4,
-                    child: const PostDetailsInformation()),
+                  height: MediaQuery.of(context).size.height / 4,
+                  // child: const PostDetailsInformation()
+                ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height / 4,
                   child: const Row(
@@ -174,7 +174,7 @@ class _PostPageState extends State<DeletePostDetailsPage> {
                               TitleDonationDetailsPage(
                                 text: 'الوصف',
                               ),
-                              DescriptionBox(),
+                              // DescriptionBox(),
                             ],
                           ))
                     ],

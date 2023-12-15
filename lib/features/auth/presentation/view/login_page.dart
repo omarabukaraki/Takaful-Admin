@@ -39,13 +39,15 @@ class _LoginPageState extends State<LoginPage> {
         isLoding = true;
       } else if (state is LoginSuccess) {
         isLoding = false;
-        clearText();
 
-        Navigator.pushReplacement(context, MaterialPageRoute(
-          builder: (context) {
-            return const HomePage();
-          },
-        ));
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) {
+              return const HomePage();
+            },
+          ),
+        );
       } else if (state is LoginFailure) {
         isLoding = false;
         showSankBar(context, state.errMessage);
@@ -61,6 +63,7 @@ class _LoginPageState extends State<LoginPage> {
           body: Form(
             key: formKey,
             child: ListView(
+              // keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
               children: [
                 const SizedBox(
                   height: 75,
@@ -116,5 +119,11 @@ class _LoginPageState extends State<LoginPage> {
         ),
       );
     });
+  }
+
+  @override
+  void dispose() {
+    clearText();
+    super.dispose();
   }
 }

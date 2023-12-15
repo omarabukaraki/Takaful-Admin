@@ -3,11 +3,10 @@ import 'package:flutter/material.dart';
 class DescriptionBox extends StatelessWidget {
   const DescriptionBox({
     super.key,
-    // required this.widget,
+    required this.postDescription,
   });
 
-  // final DonationDetailsPage widget;
-
+  final String postDescription;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -25,11 +24,10 @@ class DescriptionBox extends StatelessWidget {
             )
           ],
           color: Colors.white),
-      child: const Text(
-        // widget.donationModel!.description,
-        'حداد متفرغ لصيانة الساجد من الساعة 10 صباحا الى 5 مسائا بدون مقابل',
+      child: Text(
+        postDescription,
         textAlign: TextAlign.end,
-        style: TextStyle(
+        style: const TextStyle(
           fontSize: 14,
           color: Colors.black,
         ),

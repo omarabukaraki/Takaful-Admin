@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-//import 'package:takaful/features/get_donation/data/model/donation_model.dart';
 import 'package:takaful_admin1/core/utils/app_colors.dart';
+import 'package:takaful_admin1/features/manage_post_request/data/post_model.dart';
 import 'package:takaful_admin1/features/manage_post_request/presentation/views/widgets/image_count.dart';
 import 'package:takaful_admin1/features/manage_post_request/presentation/views/widgets/post_widget/post_cover_image.dart';
 import 'package:takaful_admin1/features/manage_post_request/presentation/views/widgets/post_widget/post_cover_info.dart';
@@ -9,11 +9,11 @@ class DonationComponent extends StatelessWidget {
   const DonationComponent({
     super.key,
     this.onTapRequest,
-    // this.donation,
-    this.donationId,
+    this.post,
+    //this.donationId,
   });
-  final String? donationId;
-  // final DonationModel? donation;
+  //final String? donationId;
+  final PostModel? post;
   final VoidCallback? onTapRequest;
 
   @override
@@ -32,31 +32,28 @@ class DonationComponent extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(15),
         child: Column(crossAxisAlignment: CrossAxisAlignment.end, children: [
-          const Expanded(
+          Expanded(
               flex: 5,
               child: Row(
                 children: [
                   Expanded(
                     flex: 1,
                     child: DonationCoverInformation(
-                        title: 'سعيد علم حاسوب',
-                        //donation!.title,
-                        typePost: 'علم حاسوب',
-                        //'${donation!.category} - ${donation!.itemOrService}',
-                        location: 'الجامعة الهاشمية'
-                        // '${donation!.location} - ${donation!.subLocation}',
-                        ),
+                      title: post!.title,
+                      typePost: '${post!.category} - ${post!.itemOrService}',
+                      location: '${post!.location} - ${post!.subLocation}',
+                    ),
                   ),
                   Expanded(
                       flex: 1,
                       child: DonationCoverImage(
-                        // image: donation!.image[0],
-                        image:
-                            'https://www.bbcgoodfoodme.com/wp-content/uploads/2023/11/Sirali_007-scaled.jpg',
+                        image: post!.image![0],
+                        // image:
+                        //     'https://www.bbcgoodfoodme.com/wp-content/uploads/2023/11/Sirali_007-scaled.jpg',
                       )),
                 ],
               )),
-          const Expanded(
+          Expanded(
               flex: 1,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -74,9 +71,7 @@ class DonationComponent extends StatelessWidget {
                   //   )),
                   // ),
                   // const SizedBox(width: 10),
-                  ImageCount(countImage: 2
-                      //donation!.image.length
-                      ),
+                  ImageCount(countImage: post!.image!.length),
                 ],
               )),
           Expanded(

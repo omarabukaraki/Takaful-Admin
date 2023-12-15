@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:takaful_admin1/core/utils/app_colors.dart';
 
 class PostDetailsButton extends StatelessWidget {
   const PostDetailsButton({
@@ -24,7 +23,7 @@ class PostDetailsButton extends StatelessWidget {
         width: double.infinity,
         height: 65,
         decoration: BoxDecoration(
-            border: Border.all(color: AppColor.kPrimary),
+            // border: Border.all(color: AppColor.kPrimary, width: 5),
             borderRadius: BorderRadius.circular(20),
             color: color),
         alignment: Alignment.center,

@@ -1,37 +1,44 @@
 import 'package:flutter/material.dart';
+import 'package:takaful_admin1/features/manage_post_request/data/post_model.dart';
 import 'package:takaful_admin1/features/manage_post_request/presentation/views/widgets/post_details_widget/post_details_info_component.dart';
 import 'package:takaful_admin1/features/manage_post_request/presentation/views/widgets/post_details_widget/title_post_details_page.dart';
 
 class PostDetailsInformation extends StatelessWidget {
   const PostDetailsInformation({
     super.key,
+    required this.post,
   });
-
+  final PostModel post;
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.only(top: 25.0),
+    return Padding(
+      padding: const EdgeInsets.only(top: 25.0),
       child: Row(
         children: [
           Expanded(
             flex: 8,
             child: Column(
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 27,
                 ),
-                PostDetailsInformationComponent(),
-                PostDetailsInformationComponent()
+                PostDetailsInformationComponent(
+                    data: '${post.location} - ${post.subLocation}',
+                    section: 'الموقع'),
+                PostDetailsInformationComponent(
+                  data: post.createAt!.substring(0, 16),
+                  section: 'تاريخ النشر',
+                )
               ],
             ),
           ),
-          Expanded(child: SizedBox()),
+          const Expanded(child: SizedBox()),
           Expanded(
             flex: 8,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Row(
+                const Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     TitleDonationDetailsPage(
@@ -39,8 +46,14 @@ class PostDetailsInformation extends StatelessWidget {
                     ),
                   ],
                 ),
-                PostDetailsInformationComponent(),
-                PostDetailsInformationComponent(),
+                PostDetailsInformationComponent(
+                  data: '${post.category} , ${post.itemOrService}',
+                  section: 'القسم',
+                ),
+                PostDetailsInformationComponent(
+                  data: post.state,
+                  section: 'الحالة',
+                ),
               ],
             ),
           )

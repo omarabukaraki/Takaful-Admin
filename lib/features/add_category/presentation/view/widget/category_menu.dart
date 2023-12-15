@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:takaful_admin1/core/utils/app_colors.dart';
+import 'package:takaful_admin1/features/add_category/data/category_model.dart';
 import 'package:takaful_admin1/features/add_category/presentation/view/category_page.dart';
 
 class CategoryMenu extends StatelessWidget {
@@ -9,14 +10,18 @@ class CategoryMenu extends StatelessWidget {
     this.text,
     this.onTap,
     super.key,
+    this.categoryModel,
+    required this.type,
   });
   final String? text;
   final String? image;
   final VoidCallback? onTap;
+  final CategoryModel? categoryModel;
+  final String type;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: image != null
+      onTap: categoryModel?.image != null
           ? onTap
           : () {
               showDialog(
@@ -27,7 +32,9 @@ class CategoryMenu extends StatelessWidget {
                     SizedBox(
                       width: MediaQuery.of(context).size.width -
                           MediaQuery.of(context).size.width / 4,
-                      child: const CategoryPage(),
+                      child: CategoryPage(
+                        type: type,
+                      ),
                     ),
                     SizedBox(
                       width: MediaQuery.of(context).size.width / 4,
@@ -64,7 +71,9 @@ class CategoryMenu extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Text(
-                      text != null ? text! : 'إضافة قسم',
+                      categoryModel?.title != null
+                          ? categoryModel!.title!
+                          : 'إضافة قسم',
                       style: const TextStyle(
                         fontSize: 30,
                         color: AppColor.kFont,
@@ -107,10 +116,10 @@ class CategoryMenu extends StatelessWidget {
                     ]),
                 width: 90,
                 height: 90,
-                child: image != null
+                child: categoryModel?.image != null
                     ? Image(
                         image: CachedNetworkImageProvider(
-                          image!,
+                          categoryModel!.image!,
                         ),
                         fit: BoxFit.cover,
                       )
