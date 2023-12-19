@@ -8,7 +8,7 @@ import 'package:takaful_admin1/features/generate_analitices/presentation/view/ge
 import 'package:takaful_admin1/features/home/presentation/view/widgets/custom_list_tile.dart';
 import 'package:takaful_admin1/features/manage_post_request/presentation/views/manage_post_request_page.dart';
 
-import '../../../send_message/presentation/view/send_message_page.dart';
+import '../../../send_notification/presentation/view/send_notification_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -20,7 +20,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final screen = const [
     ManagePostReqPage(),
-    SendMessagePage(),
+    SendNotificationPage(),
     BanUserPage(),
     DeletePostPage(),
     AddCategoryPage(),
