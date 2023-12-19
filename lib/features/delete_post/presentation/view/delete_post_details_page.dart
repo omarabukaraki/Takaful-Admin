@@ -1,13 +1,17 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:takaful_admin1/core/utils/app_colors.dart';
 import 'package:takaful_admin1/core/widget/custom_text_field.dart';
 import 'package:takaful_admin1/features/manage_post_request/data/post_model.dart';
+import 'package:takaful_admin1/features/manage_post_request/presentation/cubits/manage_post_cubit/manage_post_cubit.dart';
 import 'package:takaful_admin1/features/manage_post_request/presentation/views/widgets/post_details_widget/image_count_and_full_count.dart';
 import 'package:takaful_admin1/features/manage_post_request/presentation/views/widgets/post_details_widget/post_details_button.dart';
 import 'package:takaful_admin1/features/manage_post_request/presentation/views/widgets/post_details_widget/post_details_image.dart';
 import 'package:takaful_admin1/features/manage_post_request/presentation/views/widgets/post_details_widget/title_post_details_page.dart';
-
+import '../../../../core/helper/custom_awsome_dialog.dart';
+import '../../../../core/utils/app_strings.dart';
 import '../../../manage_post_request/presentation/views/widgets/post_details_widget/description_box.dart';
 import '../../../manage_post_request/presentation/views/widgets/post_details_widget/doner_account_box.dart';
 import '../../../manage_post_request/presentation/views/widgets/post_details_widget/post_details_information.dart';
@@ -81,7 +85,19 @@ class _PostPageState extends State<DeletePostDetailsPage> {
                             //start delete button
                             PostDetailsButton(
                               text: 'حذف الإعلان',
-                              onTap: () {},
+                              onTap: () async {
+                                await BlocProvider.of<ManagePostCubit>(context)
+                                    .rejectPost(postId: widget.postId);
+                                // ignore: use_build_context_synchronously
+                                await customDialog(
+                                  context: context,
+                                  dialogBody: 'لقد نم حذف الإعلان بنجاح',
+                                  dialogType: DialogType.error,
+                                  onDismissCallback: (dismiss) {
+                                    Navigator.pop(context);
+                                  },
+                                ).show();
+                              },
                               color: AppColor.kRed,
                               textColor: AppColor.kWhite,
                             )
