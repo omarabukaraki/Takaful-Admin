@@ -4,15 +4,11 @@ import 'package:takaful_admin1/core/utils/app_colors.dart';
 import 'package:takaful_admin1/features/ban_user/presentation/view/widgets/user_widget/user_cover_image.dart';
 import 'package:takaful_admin1/features/ban_user/presentation/view/widgets/user_widget/user_cover_info.dart';
 
+import '../../../../data/user_model.dart';
+
 class UserComponent extends StatelessWidget {
-  const UserComponent({
-    super.key,
-    this.onTapRequest,
-    // this.donation,
-    this.donationId,
-  });
-  final String? donationId;
-  // final DonationModel? donation;
+  const UserComponent({super.key, this.onTapRequest, required this.user});
+  final UserModel user;
   final VoidCallback? onTapRequest;
 
   @override
@@ -31,27 +27,21 @@ class UserComponent extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(15),
         child: Column(crossAxisAlignment: CrossAxisAlignment.end, children: [
-          const Expanded(
+          Expanded(
               flex: 5,
               child: Row(
                 children: [
                   Expanded(
                     flex: 2,
                     child: UserCoverInformation(
-                        userName: 'ايهم عامر صالح',
-                        //donation!.title,
-                        userNumber: '0781884410',
-                        //'${donation!.category} - ${donation!.itemOrService}',
-                        userEmail: 'ayhamsaleh234@gmail.com'
-                        // '${donation!.location} - ${donation!.subLocation}',
-                        ),
+                        userName: user.name,
+                        userNumber: user.mobileNumber,
+                        userEmail: user.email),
                   ),
                   Expanded(
                       flex: 1,
                       child: UserCoverImage(
-                        // image: donation!.image[0],
-                        image:
-                            'https://www.bbcgoodfoodme.com/wp-content/uploads/2023/11/Sirali_007-scaled.jpg',
+                        image: user.image,
                       )),
                 ],
               )),

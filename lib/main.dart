@@ -12,6 +12,7 @@ import 'package:takaful_admin1/features/manage_post_request/presentation/cubits/
 import 'package:takaful_admin1/features/manage_post_request/presentation/cubits/manage_post_cubit/manage_post_cubit.dart';
 import 'package:takaful_admin1/firebase_options.dart';
 
+import 'features/ban_user/presentation/cubit/get_users_cubit.dart';
 import 'features/send_notification/presentation/cubit/send_notification_cubit.dart';
 
 Future<void> main() async {
@@ -37,7 +38,8 @@ class TakafulAdmin extends StatelessWidget {
         BlocProvider(create: (context) => GetPostCubit()),
         BlocProvider(create: (context) => GetUserInformationCubit()),
         BlocProvider(create: (context) => ManagePostCubit()),
-        BlocProvider(create: (context) => SendNotificationCubit())
+        BlocProvider(create: (context) => SendNotificationCubit()),
+        BlocProvider(create: (context) => GetUsersCubit())
       ],
       child: MaterialApp(
           debugShowCheckedModeBanner: false,
