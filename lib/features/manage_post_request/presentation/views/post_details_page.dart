@@ -1,7 +1,12 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:takaful_admin1/core/helper/custom_awsome_dialog.dart';
 import 'package:takaful_admin1/core/utils/app_colors.dart';
+import 'package:takaful_admin1/core/utils/app_strings.dart';
 import 'package:takaful_admin1/features/manage_post_request/data/post_model.dart';
+import 'package:takaful_admin1/features/manage_post_request/presentation/cubits/manage_post_cubit/manage_post_cubit.dart';
 import 'package:takaful_admin1/features/manage_post_request/presentation/views/widgets/post_details_widget/description_box.dart';
 import 'package:takaful_admin1/features/manage_post_request/presentation/views/widgets/post_details_widget/doner_account_box.dart';
 import 'package:takaful_admin1/features/manage_post_request/presentation/views/widgets/post_details_widget/image_count_and_full_count.dart';
@@ -11,8 +16,9 @@ import 'package:takaful_admin1/features/manage_post_request/presentation/views/w
 import 'package:takaful_admin1/features/manage_post_request/presentation/views/widgets/post_details_widget/title_post_details_page.dart';
 
 class PostPage extends StatefulWidget {
-  const PostPage({super.key, required this.post});
+  const PostPage({super.key, required this.post, required this.postId});
   final PostModel post;
+  final String postId;
   @override
   State<PostPage> createState() => _PostPageState();
 }
@@ -48,7 +54,6 @@ class _PostPageState extends State<PostPage> {
                         children: [
                           Text(
                             widget.post.title!,
-                            // 'متبرع لصيانة مسجد في عمان متبرع لصيانة مسجد في عمانمتبرع لصيانة مسجد في عمان',
                             style: const TextStyle(
                               fontSize: 20,
                               color: Colors.black,
@@ -59,13 +64,38 @@ class _PostPageState extends State<PostPage> {
                           ),
                           PostDetailsButton(
                             text: 'نشر الإعلان',
-                            onTap: () {},
+                            onTap: () async {
+                              await BlocProvider.of<ManagePostCubit>(context)
+                                  .acceptPost(
+                                      postId: widget.postId, postState: true);
+                              // ignore: use_build_context_synchronously
+                              await customDialog(
+                                context: context,
+                                dialogBody: AppString.publishedSuccessfully,
+                                dialogType: DialogType.success,
+                                onDismissCallback: (p0) {
+                                  Navigator.pop(context);
+                                },
+                              ).show();
+                            },
                             color: AppColor.kPrimary,
                             textColor: AppColor.kWhite,
                           ),
                           PostDetailsButton(
                             text: 'رفض النشر',
-                            onTap: () {},
+                            onTap: () async {
+                              await BlocProvider.of<ManagePostCubit>(context)
+                                  .rejectPost(postId: widget.postId);
+                              // ignore: use_build_context_synchronously
+                              await customDialog(
+                                context: context,
+                                dialogBody: AppString.successfullyRejected,
+                                dialogType: DialogType.error,
+                                onDismissCallback: (p0) {
+                                  Navigator.pop(context);
+                                },
+                              ).show();
+                            },
                             color: AppColor.kRed,
                             textColor: AppColor.kWhite,
                           )
@@ -83,22 +113,25 @@ class _PostPageState extends State<PostPage> {
                         ),
                         child: Stack(
                           children: [
-                            CarouselSlider.builder(
-                              itemCount: widget.post.image!.length,
-                              itemBuilder: (context, index, realIndex) {
-                                return PostDetailsImage(
-                                  image: widget.post.image![index],
-                                );
-                              },
-                              carouselController: _controller,
-                              options: CarouselOptions(
-                                height: double.infinity,
-                                viewportFraction: 1,
-                                onPageChanged: (index, reason) {
-                                  setState(() {
-                                    inIndex = index;
-                                  });
+                            Container(
+                              color: const Color.fromARGB(10, 58, 68, 160),
+                              child: CarouselSlider.builder(
+                                itemCount: widget.post.image!.length,
+                                itemBuilder: (context, index, realIndex) {
+                                  return PostDetailsImage(
+                                    image: widget.post.image![index],
+                                  );
                                 },
+                                carouselController: _controller,
+                                options: CarouselOptions(
+                                  height: double.infinity,
+                                  viewportFraction: 1,
+                                  onPageChanged: (index, reason) {
+                                    setState(() {
+                                      inIndex = index;
+                                    });
+                                  },
+                                ),
                               ),
                             ),
                             ImageCountAndFullCount(
@@ -174,4 +207,25 @@ class _PostPageState extends State<PostPage> {
           ),
         ));
   }
+
+  // AwesomeDialog CustomDialog(BuildContext context) {
+  //   return AwesomeDialog(
+  //     width: 400,
+  //     context: context,
+  //     animType: AnimType.scale,
+  //     dialogType: DialogType.success,
+  //     body: const Padding(
+  //       padding: EdgeInsets.all(8.0),
+  //       child: Center(
+  //         child: Text(
+  //           'لقد تم نشر الإعلان بنجاح',
+  //         ),
+  //       ),
+  //     ),
+  //     btnOkText: 'تم',
+  //     title: '',
+  //     desc: '',
+  //     btnOkOnPress: () {},
+  //   );
+  // }
 }

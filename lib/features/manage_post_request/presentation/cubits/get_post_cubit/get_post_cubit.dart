@@ -12,10 +12,14 @@ class GetPostCubit extends Cubit<GetPostState> {
     try {
       posts.snapshots().listen((event) {
         List<PostModel> postsList = [];
+        List<String> postsId = [];
         for (var element in event.docs) {
-          postsList.add(PostModel.fromJson(element));
+          if (element['postState'] == false) {
+            postsList.add(PostModel.fromJson(element));
+            postsId.add(element.id);
+          }
         }
-        emit(GetPostSuccessState(posts: postsList));
+        emit(GetPostSuccessState(posts: postsList, postsId: postsId));
       });
     } catch (e) {
       emit(GetPostFailureState());

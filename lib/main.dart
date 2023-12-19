@@ -9,6 +9,7 @@ import 'package:takaful_admin1/features/auth/presentation/login_cubit/login_cubi
 import 'package:takaful_admin1/features/home/presentation/view/home_page.dart';
 import 'package:takaful_admin1/features/manage_post_request/presentation/cubits/get_post_cubit/get_post_cubit.dart';
 import 'package:takaful_admin1/features/manage_post_request/presentation/cubits/get_user_information_cubit/get_user_information_cubit.dart';
+import 'package:takaful_admin1/features/manage_post_request/presentation/cubits/manage_post_cubit/manage_post_cubit.dart';
 import 'package:takaful_admin1/firebase_options.dart';
 
 Future<void> main() async {
@@ -32,7 +33,8 @@ class TakafulAdmin extends StatelessWidget {
         BlocProvider(create: (context) => GetItemCategoryCubit()),
         BlocProvider(create: (context) => AddCategoryCubit()),
         BlocProvider(create: (context) => GetPostCubit()),
-        BlocProvider(create: (context) => GetUserInformationCubit())
+        BlocProvider(create: (context) => GetUserInformationCubit()),
+        BlocProvider(create: (context) => ManagePostCubit())
       ],
       child: MaterialApp(
           debugShowCheckedModeBanner: false,

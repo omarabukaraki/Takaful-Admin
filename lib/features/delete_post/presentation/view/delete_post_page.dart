@@ -25,29 +25,31 @@ class DeletePostPage extends StatelessWidget {
                     ),
                     itemCount: 8,
                     itemBuilder: (context, index) {
-                      return DonationComponent(onTapRequest: () {
-                        // Navigator.of(context)
-                        //     .push(MaterialPageRoute(builder: (context) {
-                        //   return const DeletePostDetailsPage();
-                        // }));
-                        showDialog(
-                          barrierColor: Colors.transparent,
-                          context: context,
-                          builder: (context) => Row(
-                            children: [
-                              Container(
-                                color: Colors.amber,
-                                width: MediaQuery.of(context).size.width -
-                                    MediaQuery.of(context).size.width / 4,
-                                child: const DeletePostDetailsPage(),
-                              ),
-                              SizedBox(
-                                width: MediaQuery.of(context).size.width / 4,
-                              ),
-                            ],
-                          ),
-                        );
-                      });
+                      return const SizedBox();
+
+                      // DonationComponent(onTapRequest: () {
+                      //   // Navigator.of(context)
+                      //   //     .push(MaterialPageRoute(builder: (context) {
+                      //   //   return const DeletePostDetailsPage();
+                      //   // }));
+                      //   showDialog(
+                      //     barrierColor: Colors.transparent,
+                      //     context: context,
+                      //     builder: (context) => Row(
+                      //       children: [
+                      //         Container(
+                      //           color: Colors.amber,
+                      //           width: MediaQuery.of(context).size.width -
+                      //               MediaQuery.of(context).size.width / 4,
+                      //           child: const DeletePostDetailsPage(),
+                      //         ),
+                      //         SizedBox(
+                      //           width: MediaQuery.of(context).size.width / 4,
+                      //         ),
+                      //       ],
+                      //     ),
+                      //   );
+                      // });
                     },
                   ),
                 ),

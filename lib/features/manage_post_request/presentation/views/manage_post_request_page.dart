@@ -23,18 +23,20 @@ class _ManagePostReqPageState extends State<ManagePostReqPage> {
   }
 
   List<PostModel> posts = [];
-  bool isLoding = false;
+  List<String> postsId = [];
+  bool isLoading = false;
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<GetPostCubit, GetPostState>(
       listener: (context, state) {
         if (state is GetPostLodingState) {
-          isLoding = true;
+          isLoading = true;
         } else if (state is GetPostSuccessState) {
           posts = state.posts;
-          isLoding = false;
+          postsId = state.postsId;
+          isLoading = false;
         } else if (state is GetPostFailureState) {
-          isLoding = false;
+          isLoading = false;
         }
       },
       builder: (context, state) {
@@ -69,6 +71,7 @@ class _ManagePostReqPageState extends State<ManagePostReqPage> {
                                           MediaQuery.of(context).size.width / 4,
                                       child: PostPage(
                                         post: posts[index],
+                                        postId: postsId[index],
                                       ),
                                     ),
                                     SizedBox(

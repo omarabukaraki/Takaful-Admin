@@ -6,14 +6,10 @@ import 'package:takaful_admin1/features/manage_post_request/presentation/views/w
 import 'package:takaful_admin1/features/manage_post_request/presentation/views/widgets/post_widget/post_cover_info.dart';
 
 class DonationComponent extends StatelessWidget {
-  const DonationComponent({
-    super.key,
-    this.onTapRequest,
-    this.post,
-    //this.donationId,
-  });
-  //final String? donationId;
-  final PostModel? post;
+  const DonationComponent({super.key, this.onTapRequest, required this.post});
+
+  final PostModel post;
+
   final VoidCallback? onTapRequest;
 
   @override
@@ -39,15 +35,15 @@ class DonationComponent extends StatelessWidget {
                   Expanded(
                     flex: 1,
                     child: DonationCoverInformation(
-                      title: post!.title,
-                      typePost: '${post!.category} - ${post!.itemOrService}',
-                      location: '${post!.location} - ${post!.subLocation}',
+                      title: post.title,
+                      typePost: '${post.category} - ${post.itemOrService}',
+                      location: '${post.location} - ${post.subLocation}',
                     ),
                   ),
                   Expanded(
                       flex: 1,
                       child: DonationCoverImage(
-                        image: post!.image![0],
+                        image: post.image![0],
                         // image:
                         //     'https://www.bbcgoodfoodme.com/wp-content/uploads/2023/11/Sirali_007-scaled.jpg',
                       )),
@@ -71,7 +67,7 @@ class DonationComponent extends StatelessWidget {
                   //   )),
                   // ),
                   // const SizedBox(width: 10),
-                  ImageCount(countImage: post!.image!.length),
+                  ImageCount(countImage: post.image!.length),
                 ],
               )),
           Expanded(
