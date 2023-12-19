@@ -26,11 +26,11 @@ class GetPostCubit extends Cubit<GetPostState> {
     }
   }
 
-  void getPostsBySearch({required String searchName}) {
+  void getPostsBySearch({required String searchValue}) {
     posts
         .orderBy('title')
-        .startAt([searchName])
-        .endAt(["$searchName\uf8ff"])
+        .startAt([searchValue])
+        .endAt(["$searchValue\uf8ff"])
         .snapshots()
         .listen((event) {
           List<PostModel> postsList = [];

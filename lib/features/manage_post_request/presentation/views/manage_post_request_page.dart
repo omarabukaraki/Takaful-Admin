@@ -50,7 +50,7 @@ class _ManagePostReqPageState extends State<ManagePostReqPage> {
                       icon: const Icon(Icons.search),
                       onChanged: (searchValue) {
                         BlocProvider.of<GetPostCubit>(context)
-                            .getPostsBySearch(searchName: searchValue);
+                            .getPostsBySearch(searchValue: searchValue);
                       },
                     ),
                     Expanded(
