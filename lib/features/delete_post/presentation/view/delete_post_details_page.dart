@@ -2,14 +2,22 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:takaful_admin1/core/utils/app_colors.dart';
 import 'package:takaful_admin1/core/widget/custom_text_field.dart';
-import 'package:takaful_admin1/features/manage_post_request/presentation/views/widgets/post_details_widget/doner_account_box.dart';
+import 'package:takaful_admin1/features/manage_post_request/data/post_model.dart';
 import 'package:takaful_admin1/features/manage_post_request/presentation/views/widgets/post_details_widget/image_count_and_full_count.dart';
 import 'package:takaful_admin1/features/manage_post_request/presentation/views/widgets/post_details_widget/post_details_button.dart';
 import 'package:takaful_admin1/features/manage_post_request/presentation/views/widgets/post_details_widget/post_details_image.dart';
 import 'package:takaful_admin1/features/manage_post_request/presentation/views/widgets/post_details_widget/title_post_details_page.dart';
 
+import '../../../manage_post_request/presentation/views/widgets/post_details_widget/description_box.dart';
+import '../../../manage_post_request/presentation/views/widgets/post_details_widget/doner_account_box.dart';
+import '../../../manage_post_request/presentation/views/widgets/post_details_widget/post_details_information.dart';
+
 class DeletePostDetailsPage extends StatefulWidget {
-  const DeletePostDetailsPage({super.key});
+  const DeletePostDetailsPage(
+      {super.key, required this.post, required this.postId});
+
+  final PostModel post;
+  final String postId;
 
   @override
   State<DeletePostDetailsPage> createState() => _PostPageState();
@@ -47,10 +55,9 @@ class _PostPageState extends State<DeletePostDetailsPage> {
                           children: [
                             // start post title
 
-                            const Text(
-                              //widget.donationModel!.title,
-                              'متبرع لصيانة مسجد في عمان متبرع لصيانة مسجد في عمانمتبرع لصيانة مسجد في عمان',
-                              style: TextStyle(
+                            Text(
+                              widget.post.title!,
+                              style: const TextStyle(
                                 fontSize: 20,
                                 color: Colors.black,
                                 fontWeight: FontWeight.bold,
@@ -93,28 +100,30 @@ class _PostPageState extends State<DeletePostDetailsPage> {
                           ),
                           child: Stack(
                             children: [
-                              CarouselSlider.builder(
-                                itemCount: 3,
-                                itemBuilder: (context, index, realIndex) {
-                                  return const PostDetailsImage(
-                                    image:
-                                        'https://www.cnet.com/a/img/resize/69256d2623afcbaa911f08edc45fb2d3f6a8e172/hub/2023/02/03/afedd3ee-671d-4189-bf39-4f312248fb27/gettyimages-1042132904.jpg?auto=webp&fit=crop&height=675&width=1200',
-                                  );
-                                },
-                                carouselController: _controller,
-                                options: CarouselOptions(
-                                  height: double.infinity,
-                                  viewportFraction: 1,
-                                  onPageChanged: (index, reason) {
-                                    setState(() {
-                                      inIndex = index;
-                                    });
+                              Container(
+                                color: const Color.fromARGB(10, 58, 68, 160),
+                                child: CarouselSlider.builder(
+                                  itemCount: widget.post.image!.length,
+                                  itemBuilder: (context, index, realIndex) {
+                                    return PostDetailsImage(
+                                      image: widget.post.image![index],
+                                    );
                                   },
+                                  carouselController: _controller,
+                                  options: CarouselOptions(
+                                    height: double.infinity,
+                                    viewportFraction: 1,
+                                    onPageChanged: (index, reason) {
+                                      setState(() {
+                                        inIndex = index;
+                                      });
+                                    },
+                                  ),
                                 ),
                               ),
                               ImageCountAndFullCount(
                                 countImage: inIndex + 1,
-                                fullCountImage: 3,
+                                fullCountImage: widget.post.image!.length,
                                 height: 25,
                               ),
                               Positioned(
@@ -146,35 +155,38 @@ class _PostPageState extends State<DeletePostDetailsPage> {
                   ),
                 ),
                 SizedBox(
-                  height: MediaQuery.of(context).size.height / 4,
-                  // child: const PostDetailsInformation()
-                ),
+                    height: MediaQuery.of(context).size.height / 4,
+                    child: PostDetailsInformation(
+                      post: widget.post,
+                    )),
                 SizedBox(
                   height: MediaQuery.of(context).size.height / 4,
-                  child: const Row(
+                  child: Row(
                     children: [
                       Expanded(
                         flex: 8,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
-                            TitleDonationDetailsPage(
+                            const TitleDonationDetailsPage(
                               text: 'حساب المتبرع',
                             ),
-                            // DonarAccountBox(),
+                            DonarAccountBox(
+                                donarAccount: widget.post.donarAccount!),
                           ],
                         ),
                       ),
-                      Expanded(child: SizedBox()),
+                      const Expanded(child: SizedBox()),
                       Expanded(
                           flex: 8,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
-                              TitleDonationDetailsPage(
+                              const TitleDonationDetailsPage(
                                 text: 'الوصف',
                               ),
-                              // DescriptionBox(),
+                              DescriptionBox(
+                                  postDescription: widget.post.description!),
                             ],
                           ))
                     ],

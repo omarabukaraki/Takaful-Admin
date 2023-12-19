@@ -7,7 +7,7 @@ class GetPostCubit extends Cubit<GetPostState> {
   GetPostCubit() : super(GetPostInitial());
   CollectionReference posts =
       FirebaseFirestore.instance.collection('donations');
-  void getPost() {
+  void getPostToManagePost() {
     emit(GetPostLodingState());
     try {
       posts.snapshots().listen((event) {
@@ -26,22 +26,50 @@ class GetPostCubit extends Cubit<GetPostState> {
     }
   }
 
-  void getPostsBySearch({required String searchValue}) {
-    posts
-        .orderBy('title')
-        .startAt([searchValue])
-        .endAt(["$searchValue\uf8ff"])
-        .snapshots()
-        .listen((event) {
-          List<PostModel> postsList = [];
-          List<String> postsId = [];
-          for (var doc in event.docs) {
-            if (doc['postState'] == false) {
-              postsList.add(PostModel.fromJson(doc));
-              postsId.add(doc.id);
+  void getPostToDeletePost() {
+    emit(GetPostLodingState());
+    try {
+      posts.snapshots().listen((event) {
+        List<PostModel> postsList = [];
+        List<String> postsId = [];
+        for (var element in event.docs) {
+          postsList.add(PostModel.fromJson(element));
+          postsId.add(element.id);
+        }
+        emit(GetPostSuccessState(posts: postsList, postsId: postsId));
+      });
+    } catch (e) {
+      emit(GetPostFailureState());
+    }
+  }
+
+  void getPostsBySearch(
+      {required String searchValue, required bool getAllPost}) {
+    emit(GetPostLodingState());
+    try {
+      posts
+          .orderBy('title')
+          .startAt([searchValue])
+          .endAt(["$searchValue\uf8ff"])
+          .snapshots()
+          .listen((event) {
+            List<PostModel> postsList = [];
+            List<String> postsId = [];
+            for (var doc in event.docs) {
+              if (getAllPost == true) {
+                postsList.add(PostModel.fromJson(doc));
+                postsId.add(doc.id);
+              } else {
+                if (doc['postState'] == false) {
+                  postsList.add(PostModel.fromJson(doc));
+                  postsId.add(doc.id);
+                }
+              }
             }
-          }
-          emit(GetPostSuccessState(posts: postsList, postsId: postsId));
-        });
+            emit(GetPostSuccessState(posts: postsList, postsId: postsId));
+          });
+    } catch (e) {
+      emit(GetPostFailureState());
+    }
   }
 }

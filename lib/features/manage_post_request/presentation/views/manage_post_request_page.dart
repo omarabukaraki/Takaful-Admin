@@ -19,7 +19,7 @@ class _ManagePostReqPageState extends State<ManagePostReqPage> {
   @override
   void initState() {
     super.initState();
-    BlocProvider.of<GetPostCubit>(context).getPost();
+    BlocProvider.of<GetPostCubit>(context).getPostToManagePost();
   }
 
   List<PostModel> posts = [];
@@ -49,8 +49,8 @@ class _ManagePostReqPageState extends State<ManagePostReqPage> {
                       hintText: AppString.textSearchInPosts,
                       icon: const Icon(Icons.search),
                       onChanged: (searchValue) {
-                        BlocProvider.of<GetPostCubit>(context)
-                            .getPostsBySearch(searchValue: searchValue);
+                        BlocProvider.of<GetPostCubit>(context).getPostsBySearch(
+                            searchValue: searchValue, getAllPost: false);
                       },
                     ),
                     Expanded(
