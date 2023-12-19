@@ -71,6 +71,12 @@ class _ManagePostReqPageState extends State<ManagePostReqPage> {
                                 builder: (context) => Row(
                                   children: [
                                     Container(
+                                      height: MediaQuery.of(context)
+                                                  .viewInsets
+                                                  .bottom ==
+                                              0
+                                          ? MediaQuery.of(context).size.height
+                                          : 0,
                                       color: Colors.amber,
                                       width: MediaQuery.of(context).size.width -
                                           MediaQuery.of(context).size.width / 4,
