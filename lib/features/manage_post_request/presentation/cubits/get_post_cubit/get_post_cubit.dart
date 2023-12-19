@@ -25,4 +25,23 @@ class GetPostCubit extends Cubit<GetPostState> {
       emit(GetPostFailureState());
     }
   }
+
+  void getPostsBySearch({required String searchName}) {
+    posts
+        .orderBy('title')
+        .startAt([searchName])
+        .endAt(["$searchName\uf8ff"])
+        .snapshots()
+        .listen((event) {
+          List<PostModel> postsList = [];
+          List<String> postsId = [];
+          for (var doc in event.docs) {
+            if (doc['postState'] == false) {
+              postsList.add(PostModel.fromJson(doc));
+              postsId.add(doc.id);
+            }
+          }
+          emit(GetPostSuccessState(posts: postsList, postsId: postsId));
+        });
+  }
 }

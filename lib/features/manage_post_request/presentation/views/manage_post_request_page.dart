@@ -45,9 +45,14 @@ class _ManagePostReqPageState extends State<ManagePostReqPage> {
                 padding: const EdgeInsets.symmetric(horizontal: 30.0),
                 child: Column(
                   children: [
-                    const CustomSearchBar(
-                        hintText: AppString.textSearchInPosts,
-                        icon: Icon(Icons.search)),
+                    CustomSearchBar(
+                      hintText: AppString.textSearchInPosts,
+                      icon: const Icon(Icons.search),
+                      onChanged: (searchValue) {
+                        BlocProvider.of<GetPostCubit>(context)
+                            .getPostsBySearch(searchName: searchValue);
+                      },
+                    ),
                     Expanded(
                       child: GridView.builder(
                         gridDelegate:
