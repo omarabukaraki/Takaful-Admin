@@ -15,12 +15,32 @@ class GetUsersCubit extends Cubit<GetUsersState> {
     emit(GetUsersLoading());
     try {
       users.snapshots().listen((event) {
-        List<UserModel> users = [];
+        List<UserModel> usersList = [];
         for (var doc in event.docs) {
-          users.add(UserModel.fromJson(doc));
+          usersList.add(UserModel.fromJson(doc));
         }
-        emit(GetUsersSuccess(users: users));
+        emit(GetUsersSuccess(users: usersList));
       });
+    } catch (e) {
+      emit(GetUsersFailure());
+    }
+  }
+
+  void getUsersBySearch({required String searchValue}) {
+    emit(GetUsersLoading());
+    try {
+      users
+          .orderBy('name')
+          .startAt([searchValue])
+          .endAt(["$searchValue\uf8ff"])
+          .snapshots()
+          .listen((event) {
+            List<UserModel> usersList = [];
+            for (var doc in event.docs) {
+              usersList.add(UserModel.fromJson(doc));
+            }
+            emit(GetUsersSuccess(users: usersList));
+          });
     } catch (e) {
       emit(GetUsersFailure());
     }

@@ -43,9 +43,14 @@ class _BanUserPageState extends State<BanUserPage> {
             padding: const EdgeInsets.symmetric(horizontal: 30.0),
             child: Column(
               children: [
-                const CustomSearchBar(
-                    hintText: AppString.textSearchInUsers,
-                    icon: Icon(Icons.search)),
+                CustomSearchBar(
+                  hintText: AppString.textSearchInUsers,
+                  icon: const Icon(Icons.search),
+                  onChanged: (searchValue) {
+                    BlocProvider.of<GetUsersCubit>(context)
+                        .getUsersBySearch(searchValue: searchValue);
+                  },
+                ),
                 Expanded(
                   child: isLoading != true
                       ? GridView.builder(
