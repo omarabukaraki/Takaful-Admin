@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:takaful_admin1/core/utils/app_strings.dart';
 import 'package:takaful_admin1/core/widget/custom_search_bar.dart';
 import 'package:takaful_admin1/features/manage_post_request/data/post_model.dart';
-import 'package:takaful_admin1/features/manage_post_request/presentation/views/get_post_cubit/get_post_cubit.dart';
-import 'package:takaful_admin1/features/manage_post_request/presentation/views/get_post_cubit/get_post_state.dart';
+import 'package:takaful_admin1/features/manage_post_request/presentation/cubits/get_post_cubit/get_post_cubit.dart';
+import 'package:takaful_admin1/features/manage_post_request/presentation/cubits/get_post_cubit/get_post_state.dart';
 import 'package:takaful_admin1/features/manage_post_request/presentation/views/post_details_page.dart';
 import 'package:takaful_admin1/features/manage_post_request/presentation/views/widgets/post_widget/post_component.dart';
 

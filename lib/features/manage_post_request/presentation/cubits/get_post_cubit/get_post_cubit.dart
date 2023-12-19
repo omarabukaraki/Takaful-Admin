@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:takaful_admin1/features/manage_post_request/data/post_model.dart';
-import 'package:takaful_admin1/features/manage_post_request/presentation/views/get_post_cubit/get_post_state.dart';
+import 'package:takaful_admin1/features/manage_post_request/presentation/cubits/get_post_cubit/get_post_state.dart';
 
 class GetPostCubit extends Cubit<GetPostState> {
   GetPostCubit() : super(GetPostInitial());

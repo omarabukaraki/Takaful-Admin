@@ -140,15 +140,16 @@ class _PostPageState extends State<PostPage> {
                 height: MediaQuery.of(context).size.height / 4,
                 child: Row(
                   children: [
-                    const Expanded(
+                    Expanded(
                       flex: 8,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
-                          TitleDonationDetailsPage(
+                          const TitleDonationDetailsPage(
                             text: 'حساب المتبرع',
                           ),
-                          DonarAccountBox(),
+                          DonarAccountBox(
+                              donarAccount: widget.post.donarAccount!),
                         ],
                       ),
                     ),

@@ -161,7 +161,7 @@ class _PostPageState extends State<DeletePostDetailsPage> {
                             TitleDonationDetailsPage(
                               text: 'حساب المتبرع',
                             ),
-                            DonarAccountBox(),
+                            // DonarAccountBox(),
                           ],
                         ),
                       ),
