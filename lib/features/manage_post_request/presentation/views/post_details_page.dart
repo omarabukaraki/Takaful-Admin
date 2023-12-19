@@ -73,7 +73,7 @@ class _PostPageState extends State<PostPage> {
                                 context: context,
                                 dialogBody: AppString.publishedSuccessfully,
                                 dialogType: DialogType.success,
-                                onDismissCallback: (p0) {
+                                onDismissCallback: (dismiss) {
                                   Navigator.pop(context);
                                 },
                               ).show();
@@ -91,7 +91,7 @@ class _PostPageState extends State<PostPage> {
                                 context: context,
                                 dialogBody: AppString.successfullyRejected,
                                 dialogType: DialogType.error,
-                                onDismissCallback: (p0) {
+                                onDismissCallback: (dismiss) {
                                   Navigator.pop(context);
                                 },
                               ).show();
