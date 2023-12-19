@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:takaful_admin1/core/utils/app_colors.dart';
 
 class TitleAddCategoryPage extends StatelessWidget {
   const TitleAddCategoryPage({super.key, this.text});
@@ -8,9 +9,9 @@ class TitleAddCategoryPage extends StatelessWidget {
     return Text(
       text ?? 'الوصف',
       style: const TextStyle(
-        fontSize: 38,
-        color: Colors.black,
-        fontWeight: FontWeight.bold,
+        fontSize: 32,
+        color: AppColor.kFont,
+        fontWeight: FontWeight.w300,
       ),
       maxLines: 1,
     );
