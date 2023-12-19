@@ -11,7 +11,6 @@ import 'package:takaful_admin1/features/manage_post_request/presentation/views/w
 import 'package:takaful_admin1/features/manage_post_request/presentation/views/widgets/post_details_widget/post_details_image.dart';
 import 'package:takaful_admin1/features/manage_post_request/presentation/views/widgets/post_details_widget/title_post_details_page.dart';
 import '../../../../core/helper/custom_awsome_dialog.dart';
-import '../../../../core/utils/app_strings.dart';
 import '../../../manage_post_request/presentation/views/widgets/post_details_widget/description_box.dart';
 import '../../../manage_post_request/presentation/views/widgets/post_details_widget/doner_account_box.dart';
 import '../../../manage_post_request/presentation/views/widgets/post_details_widget/post_details_information.dart';
