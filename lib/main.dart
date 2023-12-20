@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:takaful_admin1/core/utils/app_colors.dart';
 import 'package:takaful_admin1/features/add_category/presentation/cubit/add_category_cubit/add_category_cubit.dart';
+import 'package:takaful_admin1/features/add_category/presentation/cubit/add_image_cubit/add_image_cubit.dart';
 import 'package:takaful_admin1/features/add_category/presentation/cubit/get_item_category_cubit/get_item_category_cubit.dart';
 import 'package:takaful_admin1/features/add_category/presentation/cubit/get_service_category_cubit/get_service_category_cubit.dart';
 import 'package:takaful_admin1/features/auth/presentation/login_cubit/login_cubit.dart';
@@ -39,7 +40,8 @@ class TakafulAdmin extends StatelessWidget {
         BlocProvider(create: (context) => GetUserInformationCubit()),
         BlocProvider(create: (context) => ManagePostCubit()),
         BlocProvider(create: (context) => SendNotificationCubit()),
-        BlocProvider(create: (context) => GetUsersCubit())
+        BlocProvider(create: (context) => GetUsersCubit()),
+        BlocProvider(create: (context) => AddImageCubit())
       ],
       child: MaterialApp(
           debugShowCheckedModeBanner: false,

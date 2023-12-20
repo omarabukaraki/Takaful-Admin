@@ -4,9 +4,10 @@ import 'package:takaful_admin1/core/utils/app_colors.dart';
 import 'package:takaful_admin1/core/widget/custom_button.dart';
 import 'package:takaful_admin1/core/widget/custom_text_field.dart';
 import 'package:takaful_admin1/features/add_category/presentation/cubit/add_category_cubit/add_category_cubit.dart';
-import 'package:takaful_admin1/features/add_category/presentation/cubit/get_item_category_cubit/get_item_category_cubit.dart';
-import 'package:takaful_admin1/features/add_category/presentation/cubit/get_service_category_cubit/get_service_category_cubit.dart';
+import 'package:takaful_admin1/features/add_category/presentation/cubit/add_image_cubit/add_image_cubit.dart';
 import 'package:takaful_admin1/features/add_category/presentation/view/widget/add_image_button.dart';
+
+import 'widget/edit_image_component.dart';
 
 class CategoryPage extends StatefulWidget {
   const CategoryPage({super.key, required this.type});
@@ -19,8 +20,9 @@ class CategoryPage extends StatefulWidget {
 class _CategoryPageState extends State<CategoryPage> {
   GlobalKey<FormState> formKey = GlobalKey();
   String? categoryName;
-  String? discription;
-
+  String? description;
+  String? imageUrl;
+  bool isLoading = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,12 +53,49 @@ class _CategoryPageState extends State<CategoryPage> {
                       ),
                     ),
                     const Expanded(child: SizedBox()),
-                    const Expanded(
-                      flex: 6,
-                      child: AddImageButton(
-                        icon: Icons.camera_enhance,
-                        text: 'اضف صورة',
-                      ),
+                    BlocConsumer<AddImageCubit, AddImageState>(
+                      listener: (context, state) {
+                        if (state is AddImageSuccess) {
+                          imageUrl = state.url;
+                          isLoading = false;
+                        } else if (state is AddImageLoading) {
+                          isLoading = true;
+                        }
+                      },
+                      builder: (context, state) {
+                        return Expanded(
+                          flex: 6,
+                          child: isLoading != true
+                              ? imageUrl == null
+                                  ? AddImageButton(
+                                      onTap: () async {
+                                        await BlocProvider.of<AddImageCubit>(
+                                                context)
+                                            .pickImageFromGallery();
+                                      },
+                                      icon: Icons.camera_enhance,
+                                      text: 'اضف صورة',
+                                    )
+                                  : EditImageComponent(
+                                      imageUrl: imageUrl,
+                                      onTap: () async {
+                                        await BlocProvider.of<AddImageCubit>(
+                                                context)
+                                            .pickImageFromGallery();
+                                      },
+                                    )
+                              : Container(
+                                  margin:
+                                      const EdgeInsets.symmetric(vertical: 10),
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(20),
+                                      color: const Color.fromARGB(
+                                          50, 58, 68, 160)),
+                                  child: const Center(
+                                      child: CircularProgressIndicator()),
+                                ),
+                        );
+                      },
                     ),
                   ],
                 ),
@@ -69,7 +108,7 @@ class _CategoryPageState extends State<CategoryPage> {
                   horizontalPadding: double.infinity,
                   maxLines: 12,
                   onChanged: (data) {
-                    discription = data;
+                    description = data;
                   },
                 ),
               ),
@@ -80,17 +119,16 @@ class _CategoryPageState extends State<CategoryPage> {
                   color: AppColor.kPrimary,
                   text: 'إضافة قسم',
                   onTap: () async {
-                    if (formKey.currentState!.validate()) {
-                      BlocProvider.of<AddCategoryCubit>(context).addCategory(
-                          typeOfCategory: widget.type,
-                          title: categoryName!,
-                          image:
-                              'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg/800px-Good_Food_Display_-_NCI_Visuals_Online.jpg');
-                      BlocProvider.of<GetItemCategoryCubit>(context)
-                          .getItemCategories();
-                      BlocProvider.of<GetServiceCategoryCubit>(context)
-                          .getServiceCategories();
-                      Navigator.pop(context);
+                    if (imageUrl != null) {
+                      if (formKey.currentState!.validate()) {
+                        BlocProvider.of<AddCategoryCubit>(context).addCategory(
+                            typeOfCategory: widget.type,
+                            title: categoryName!,
+                            image: imageUrl!);
+                        Navigator.pop(context);
+                      }
+                    } else {
+                      // add a dialog or sank bar to tell admin the image is required
                     }
                   },
                   horizontalPadding: double.infinity,

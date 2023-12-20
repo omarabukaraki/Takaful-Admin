@@ -2,5 +2,7 @@
     "cSpell.words": [
         "Firestore",
         "takaful"
-    ]
+    ],
+    "editor.accessibilityPageSize": 13,
+    "editor.fontSize": 15
 }
