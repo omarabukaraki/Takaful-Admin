@@ -5,6 +5,7 @@ class UserModel {
   String mobileNumber;
   String image;
   String userToken;
+  int createAt;
 
   UserModel(
       {required this.id,
@@ -12,7 +13,8 @@ class UserModel {
       required this.name,
       required this.email,
       required this.mobileNumber,
-      required this.userToken});
+      required this.userToken,
+      required this.createAt});
 
   factory UserModel.fromJson(data) {
     return UserModel(
@@ -21,6 +23,7 @@ class UserModel {
         email: data['email'],
         image: data['image'],
         mobileNumber: data['mobileNumber'],
-        userToken: data['userToken']);
+        userToken: data['userToken'],
+        createAt: data['createAt']);
   }
 }

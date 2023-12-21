@@ -4,10 +4,11 @@ import 'package:takaful_admin1/core/utils/app_strings.dart';
 import 'package:takaful_admin1/features/add_category/presentation/view/add_category_page.dart';
 import 'package:takaful_admin1/features/ban_user/presentation/view/ban_user_page.dart';
 import 'package:takaful_admin1/features/delete_post/presentation/view/delete_post_page.dart';
-import 'package:takaful_admin1/features/generate_analitices/presentation/view/generate_analitices_page.dart';
+
 import 'package:takaful_admin1/features/home/presentation/view/widgets/custom_list_tile.dart';
 import 'package:takaful_admin1/features/manage_post_request/presentation/views/manage_post_request_page.dart';
 
+import '../../../generate_analitices/presentation/view/generate_analytics_page.dart';
 import '../../../send_notification/presentation/view/send_notification_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -24,7 +25,7 @@ class _HomePageState extends State<HomePage> {
     BanUserPage(),
     DeletePostPage(),
     AddCategoryPage(),
-    GenerateAnaliticesPage(),
+    GenerateAnalyticsPage(),
   ];
   int index = 5;
   String appBarTitle = 'الإحصائيات';

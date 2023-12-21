@@ -6,7 +6,6 @@ import 'package:takaful_admin1/core/widget/custom_text_field.dart';
 import 'package:takaful_admin1/features/add_category/presentation/cubit/add_category_cubit/add_category_cubit.dart';
 import 'package:takaful_admin1/features/add_category/presentation/cubit/add_image_cubit/add_image_cubit.dart';
 import 'package:takaful_admin1/features/add_category/presentation/view/widget/add_image_button.dart';
-
 import 'widget/edit_image_component.dart';
 
 class CategoryPage extends StatefulWidget {
