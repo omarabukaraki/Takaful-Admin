@@ -75,4 +75,7 @@ abstract class AppString {
   static const String textSearchInUsers = 'إبحث في المستخدمين';
   static const String publishedSuccessfully = 'لقد تم نشر الإعلان بنجاح';
   static const String successfullyRejected = 'لقد تم رفض نشر الإعلان بنجاح';
+  static const String monthlyPostsAnalysis = ' احصائيات الإعلانات شهريا';
+  static const String monthlyRequestsAnalysis = 'احصائيات الطلبات شهريا';
+  static const String monthlyUsersAnalysis = 'احصائيات المستخدمين شهريا';
 }

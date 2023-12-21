@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
+import 'package:takaful_admin1/core/utils/app_strings.dart';
 import '../../../../manage_post_request/presentation/cubits/get_post_cubit/get_post_cubit.dart';
 import '../../../../manage_post_request/presentation/cubits/get_post_cubit/get_post_state.dart';
 
-class MonthlyDonationAnalysisComponent extends StatefulWidget {
-  const MonthlyDonationAnalysisComponent({
+class MonthlyPostAnalysisComponent extends StatefulWidget {
+  const MonthlyPostAnalysisComponent({
     super.key,
   });
 
   @override
-  State<MonthlyDonationAnalysisComponent> createState() =>
-      _MonthlyDonationAnalysisComponentState();
+  State<MonthlyPostAnalysisComponent> createState() =>
+      _MonthlyPostAnalysisComponentState();
 }
 
-class _MonthlyDonationAnalysisComponentState
-    extends State<MonthlyDonationAnalysisComponent> {
+class _MonthlyPostAnalysisComponentState
+    extends State<MonthlyPostAnalysisComponent> {
   @override
   void initState() {
     BlocProvider.of<GetPostCubit>(context).getPostToDeletePost();
@@ -45,14 +46,14 @@ class _MonthlyDonationAnalysisComponentState
         return SizedBox(
           width: (MediaQuery.of(context).size.width -
                   MediaQuery.of(context).size.width / 4) /
-              1.07,
+              1.08,
           child: SfCartesianChart(
-            title: const ChartTitle(text: 'Monthly Posts Analysis'),
+            title: const ChartTitle(text: AppString.monthlyPostsAnalysis),
             legend:
                 const Legend(isVisible: true, position: LegendPosition.bottom),
             series: [
               BarSeries<DonationData, double>(
-                  name: 'Posts',
+                  name: 'الإعلانات',
                   color: const Color.fromARGB(255, 0, 135, 245),
                   dataSource: donationData.length < 12
                       ? [DonationData(0, 1)]
@@ -61,10 +62,10 @@ class _MonthlyDonationAnalysisComponentState
                   yValueMapper: (DonationData sales, _) => sales.donationCount)
             ],
             primaryXAxis: const NumericAxis(
-              labelFormat: 'M  {value}',
+              labelFormat: 'شهر  {value}',
             ),
             primaryYAxis: const NumericAxis(
-              labelFormat: '{value}  P',
+              labelFormat: '{value}',
             ),
           ),
         );

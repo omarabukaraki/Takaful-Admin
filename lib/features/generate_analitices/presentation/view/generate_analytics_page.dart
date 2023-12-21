@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'widget/monthly_donation_analysis_component.dart';
+import 'widget/monthly_post_analysis_component.dart';
 import 'widget/monthly_request_analysis_component.dart';
 import 'widget/monthly_users_analysis_component.dart';
 
@@ -19,7 +19,7 @@ class _GenerateAnalyticsPageState extends State<GenerateAnalyticsPage> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          MonthlyDonationAnalysisComponent(),
+          MonthlyPostAnalysisComponent(),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [

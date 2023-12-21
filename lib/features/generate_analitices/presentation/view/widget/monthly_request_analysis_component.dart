@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:takaful_admin1/core/utils/app_colors.dart';
+import 'package:takaful_admin1/core/utils/app_strings.dart';
 import '../../cubit/get_request/get_request_cubit.dart';
 
 class MonthlyRequestAnalysisComponent extends StatefulWidget {
@@ -49,12 +50,12 @@ class _MonthlyRequestAnalysisComponentState
                   MediaQuery.of(context).size.width / 4) /
               2.2,
           child: SfCartesianChart(
-            title: const ChartTitle(text: 'Monthly Requests Analysis'),
+            title: const ChartTitle(text: AppString.monthlyRequestsAnalysis),
             legend:
                 const Legend(isVisible: true, position: LegendPosition.bottom),
             series: [
               SplineAreaSeries<RequestData, double>(
-                  name: 'Requests',
+                  name: 'الطلبات',
                   color: AppColor.kPrimary,
                   dataSource: requestData.length < 12
                       ? [RequestData(requestNumber: 0, dataMonth: 1)]
@@ -63,10 +64,10 @@ class _MonthlyRequestAnalysisComponentState
                   yValueMapper: (RequestData sales, _) => sales.requestNumber)
             ],
             primaryXAxis: const NumericAxis(
-              labelFormat: 'M  {value}',
+              labelFormat: 'شهر  {value}',
             ),
             primaryYAxis: const NumericAxis(
-              labelFormat: '{value}  R',
+              labelFormat: '{value}',
             ),
           ),
         );

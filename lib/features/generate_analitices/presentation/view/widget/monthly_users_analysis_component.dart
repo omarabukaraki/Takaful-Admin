@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:takaful_admin1/core/utils/app_colors.dart';
+import 'package:takaful_admin1/core/utils/app_strings.dart';
 
 import '../../../../ban_user/presentation/cubit/get_users_cubit.dart';
 
@@ -47,12 +48,12 @@ class _MonthlyUsersAnalysisComponentState
                   MediaQuery.of(context).size.width / 4) /
               2.2,
           child: SfCartesianChart(
-            title: const ChartTitle(text: 'Monthly Users Analysis'),
+            title: const ChartTitle(text: AppString.monthlyUsersAnalysis),
             legend:
                 const Legend(isVisible: true, position: LegendPosition.bottom),
             series: [
               LineSeries<UserData, dynamic>(
-                  name: 'Users',
+                  name: 'المستخدمين',
                   color: AppColor.kRed,
                   dataSource:
                       userData.length < 12 ? [UserData(0, 1)] : userData,
@@ -60,10 +61,10 @@ class _MonthlyUsersAnalysisComponentState
                   yValueMapper: (UserData sales, _) => sales.userNumber),
             ],
             primaryXAxis: const NumericAxis(
-              labelFormat: 'M  {value}',
+              labelFormat: 'شهر  {value}',
             ),
             primaryYAxis: const NumericAxis(
-              labelFormat: '{value}  U',
+              labelFormat: '{value}',
             ),
           ),
         );
