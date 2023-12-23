@@ -64,6 +64,7 @@ abstract class AppString {
   static const String textSendNotiToUsers = 'إرسال اشعار للمستخدمين';
   static const String textBanUser = 'حظر المستخدم';
   static const String textDeletePost = 'حذف الإعلان';
+  static const String textAccountVerificationRequest = 'طلبات توثيق الحساب';
   static const String textManageApplication = 'إدارة التطبيق';
   static const String textAddCategory = 'إضافة قسم';
   static const String textAnalitices = 'الإحصائيات';
@@ -78,4 +79,5 @@ abstract class AppString {
   static const String monthlyPostsAnalysis = ' احصائيات الإعلانات شهريا';
   static const String monthlyRequestsAnalysis = 'احصائيات الطلبات شهريا';
   static const String monthlyUsersAnalysis = 'احصائيات المستخدمين شهريا';
+  static const String textView = 'عرض';
 }

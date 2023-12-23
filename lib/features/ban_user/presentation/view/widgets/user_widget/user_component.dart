@@ -7,9 +7,16 @@ import 'package:takaful_admin1/features/ban_user/presentation/view/widgets/user_
 import '../../../../data/user_model.dart';
 
 class UserComponent extends StatelessWidget {
-  const UserComponent({super.key, this.onTapRequest, required this.user});
+  const UserComponent(
+      {super.key,
+      this.onTapRequest,
+      required this.user,
+      this.nameButton,
+      this.colorButton});
   final UserModel user;
   final VoidCallback? onTapRequest;
+  final String? nameButton;
+  final Color? colorButton;
 
   @override
   Widget build(BuildContext context) {
@@ -53,11 +60,11 @@ class UserComponent extends StatelessWidget {
                   margin: const EdgeInsets.only(top: 5, left: 15),
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      color: AppColor.kRed),
-                  child: const Center(
+                      color: colorButton ?? AppColor.kRed),
+                  child: Center(
                       child: Text(
-                    'حظر المستخدم',
-                    style: TextStyle(
+                    nameButton ?? 'حظر المستخدم',
+                    style: const TextStyle(
                       fontSize: 16,
                       color: Colors.white,
                       fontWeight: FontWeight.bold,

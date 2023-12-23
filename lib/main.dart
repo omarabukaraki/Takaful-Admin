@@ -7,8 +7,8 @@ import 'package:takaful_admin1/features/add_category/presentation/cubit/add_imag
 import 'package:takaful_admin1/features/add_category/presentation/cubit/get_item_category_cubit/get_item_category_cubit.dart';
 import 'package:takaful_admin1/features/add_category/presentation/cubit/get_service_category_cubit/get_service_category_cubit.dart';
 import 'package:takaful_admin1/features/auth/presentation/login_cubit/login_cubit.dart';
+import 'package:takaful_admin1/features/auth/presentation/view/login_page.dart';
 import 'package:takaful_admin1/features/generate_analitices/presentation/cubit/get_request/get_request_cubit.dart';
-import 'package:takaful_admin1/features/home/presentation/view/home_page.dart';
 import 'package:takaful_admin1/features/manage_post_request/presentation/cubits/get_post_cubit/get_post_cubit.dart';
 import 'package:takaful_admin1/features/manage_post_request/presentation/cubits/get_user_information_cubit/get_user_information_cubit.dart';
 import 'package:takaful_admin1/features/manage_post_request/presentation/cubits/manage_post_cubit/manage_post_cubit.dart';
@@ -54,7 +54,7 @@ class TakafulAdmin extends StatelessWidget {
                 seedColor: AppColor.kPrimary, background: Colors.white),
             useMaterial3: true,
           ),
-          home: const HomePage()),
+          home: const LoginPage()),
     );
   }
 }

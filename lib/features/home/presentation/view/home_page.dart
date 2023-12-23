@@ -4,10 +4,10 @@ import 'package:takaful_admin1/core/utils/app_strings.dart';
 import 'package:takaful_admin1/features/add_category/presentation/view/add_category_page.dart';
 import 'package:takaful_admin1/features/ban_user/presentation/view/ban_user_page.dart';
 import 'package:takaful_admin1/features/delete_post/presentation/view/delete_post_page.dart';
-
 import 'package:takaful_admin1/features/home/presentation/view/widgets/custom_list_tile.dart';
 import 'package:takaful_admin1/features/manage_post_request/presentation/views/manage_post_request_page.dart';
 
+import '../../../account_verification_request/presnentation/view/account_verification_request_page.dart';
 import '../../../generate_analitices/presentation/view/generate_analytics_page.dart';
 import '../../../send_notification/presentation/view/send_notification_page.dart';
 
@@ -22,12 +22,13 @@ class _HomePageState extends State<HomePage> {
   final screen = const [
     ManagePostReqPage(),
     SendNotificationPage(),
-    BanUserPage(),
     DeletePostPage(),
+    BanUserPage(),
+    AccountVerificationRequestsPage(),
     AddCategoryPage(),
     GenerateAnalyticsPage(),
   ];
-  int index = 5;
+  int index = 6;
   String appBarTitle = 'الإحصائيات';
   @override
   Widget build(BuildContext context) {
@@ -127,6 +128,17 @@ class _HomePageState extends State<HomePage> {
                   onTap: () {
                     setState(() {
                       index = 2;
+                      appBarTitle = AppString.textDeletePost;
+                    });
+                  },
+                  title: AppString.textDeletePost,
+                  mainIcon: Icons.manage_accounts_outlined,
+                  size: 19,
+                ),
+                CustomListTile(
+                  onTap: () {
+                    setState(() {
+                      index = 3;
                       appBarTitle = AppString.textBanUser;
                     });
                   },
@@ -137,11 +149,11 @@ class _HomePageState extends State<HomePage> {
                 CustomListTile(
                   onTap: () {
                     setState(() {
-                      index = 3;
-                      appBarTitle = AppString.textDeletePost;
+                      index = 4;
+                      appBarTitle = AppString.textAccountVerificationRequest;
                     });
                   },
-                  title: AppString.textDeletePost,
+                  title: AppString.textAccountVerificationRequest,
                   mainIcon: Icons.manage_accounts_outlined,
                   size: 19,
                 ),
@@ -154,7 +166,7 @@ class _HomePageState extends State<HomePage> {
                 CustomListTile(
                   onTap: () {
                     setState(() {
-                      index = 4;
+                      index = 5;
                       appBarTitle = AppString.textAddCategory;
                     });
                   },
@@ -165,7 +177,7 @@ class _HomePageState extends State<HomePage> {
                 CustomListTile(
                   onTap: () {
                     setState(() {
-                      index = 5;
+                      index = 6;
                       appBarTitle = AppString.textAnalitices;
                     });
                   },
