@@ -1,10 +1,13 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:takaful_admin1/features/ban_user/data/user_model.dart';
 
 class CharitiesAccountBox extends StatelessWidget {
-  const CharitiesAccountBox({super.key, this.height, this.vertical});
+  const CharitiesAccountBox(
+      {super.key, this.height, this.vertical, required this.user});
   final double? height;
   final double? vertical;
+  final UserModel user;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -24,23 +27,22 @@ class CharitiesAccountBox extends StatelessWidget {
             color: Colors.white),
         child: Row(
           children: [
-            const Expanded(
+            Expanded(
               flex: 2,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    // user != null ? user!.name : '',
-                    'ayham saleh',
-                    style: TextStyle(
+                    user.name,
+                    style: const TextStyle(
                       fontSize: 18,
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
                     ),
                     maxLines: 1,
                   ),
-                  Row(
+                  const Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Icon(
@@ -91,11 +93,7 @@ class CharitiesAccountBox extends StatelessWidget {
                     ],
                   ),
                   child: CachedNetworkImage(
-                    imageUrl:
-                        // user != null
-                        // ? user!.image
-                        //:
-                        'https://firebasestorage.googleapis.com/v0/b/takafultest-2ef6f.appspot.com/o/imagesForApplication%2Fuser_image.jpg?alt=media&token=1742bede-af30-493e-8e79-b08ca3c7bb0f',
+                    imageUrl: user.image,
                     fit: BoxFit.cover,
                     progressIndicatorBuilder: (context, url, downloadProgress) {
                       return CircularProgressIndicator(

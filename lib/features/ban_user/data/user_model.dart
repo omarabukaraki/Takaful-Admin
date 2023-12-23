@@ -6,6 +6,7 @@ class UserModel {
   String image;
   String userToken;
   int createAt;
+  bool isVerified;
 
   UserModel(
       {required this.id,
@@ -14,7 +15,8 @@ class UserModel {
       required this.email,
       required this.mobileNumber,
       required this.userToken,
-      required this.createAt});
+      required this.createAt,
+      required this.isVerified});
 
   factory UserModel.fromJson(data) {
     return UserModel(
@@ -24,6 +26,7 @@ class UserModel {
         image: data['image'],
         mobileNumber: data['mobileNumber'],
         userToken: data['userToken'],
-        createAt: data['createAt']);
+        createAt: data['createAt'],
+        isVerified: data['isVerified']);
   }
 }

@@ -2,18 +2,19 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:takaful_admin1/core/utils/app_colors.dart';
+import 'package:takaful_admin1/features/account_verification_request/presnentation/cubit/manage_verification_account/manage_verification_account_cubit.dart';
 import 'package:takaful_admin1/features/add_category/presentation/cubit/add_category_cubit/add_category_cubit.dart';
 import 'package:takaful_admin1/features/add_category/presentation/cubit/add_image_cubit/add_image_cubit.dart';
 import 'package:takaful_admin1/features/add_category/presentation/cubit/get_item_category_cubit/get_item_category_cubit.dart';
 import 'package:takaful_admin1/features/add_category/presentation/cubit/get_service_category_cubit/get_service_category_cubit.dart';
 import 'package:takaful_admin1/features/auth/presentation/login_cubit/login_cubit.dart';
-import 'package:takaful_admin1/features/auth/presentation/view/login_page.dart';
 import 'package:takaful_admin1/features/generate_analitices/presentation/cubit/get_request/get_request_cubit.dart';
+import 'package:takaful_admin1/features/home/presentation/view/home_page.dart';
 import 'package:takaful_admin1/features/manage_post_request/presentation/cubits/get_post_cubit/get_post_cubit.dart';
 import 'package:takaful_admin1/features/manage_post_request/presentation/cubits/get_user_information_cubit/get_user_information_cubit.dart';
 import 'package:takaful_admin1/features/manage_post_request/presentation/cubits/manage_post_cubit/manage_post_cubit.dart';
 import 'package:takaful_admin1/firebase_options.dart';
-
+import 'features/account_verification_request/presnentation/cubit/get_verification_requests/get_verification_requests_cubit.dart';
 import 'features/ban_user/presentation/cubit/get_users_cubit.dart';
 import 'features/send_notification/presentation/cubit/send_notification_cubit.dart';
 
@@ -43,7 +44,9 @@ class TakafulAdmin extends StatelessWidget {
         BlocProvider(create: (context) => SendNotificationCubit()),
         BlocProvider(create: (context) => GetUsersCubit()),
         BlocProvider(create: (context) => AddImageCubit()),
-        BlocProvider(create: (context) => GetRequestCubit())
+        BlocProvider(create: (context) => GetRequestCubit()),
+        BlocProvider(create: (context) => GetVerificationRequestsCubit()),
+        BlocProvider(create: (context) => ManageVerificationAccountCubit())
       ],
       child: MaterialApp(
           debugShowCheckedModeBanner: false,
@@ -54,7 +57,11 @@ class TakafulAdmin extends StatelessWidget {
                 seedColor: AppColor.kPrimary, background: Colors.white),
             useMaterial3: true,
           ),
-          home: const LoginPage()),
+          home: const HomePage()
+
+          // LoginPage()
+
+          ),
     );
   }
 }
