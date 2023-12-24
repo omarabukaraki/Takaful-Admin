@@ -10,10 +10,13 @@ import 'package:takaful_admin1/features/add_category/presentation/cubit/get_serv
 import 'package:takaful_admin1/features/auth/presentation/login_cubit/login_cubit.dart';
 import 'package:takaful_admin1/features/generate_analitices/presentation/cubit/get_request/get_request_cubit.dart';
 import 'package:takaful_admin1/features/home/presentation/view/home_page.dart';
+import 'package:takaful_admin1/features/manage_ad/presnentation/cubit/add_ad_cubit/add_ad_cubit.dart';
+import 'package:takaful_admin1/features/manage_ad/presnentation/cubit/get_ad_cubit/get_ad_cubit.dart';
 import 'package:takaful_admin1/features/manage_post_request/presentation/cubits/get_post_cubit/get_post_cubit.dart';
 import 'package:takaful_admin1/features/manage_post_request/presentation/cubits/get_user_information_cubit/get_user_information_cubit.dart';
 import 'package:takaful_admin1/features/manage_post_request/presentation/cubits/manage_post_cubit/manage_post_cubit.dart';
 import 'package:takaful_admin1/firebase_options.dart';
+
 import 'features/account_verification_request/presnentation/cubit/get_verification_requests/get_verification_requests_cubit.dart';
 import 'features/ban_user/presentation/cubit/get_users_cubit.dart';
 import 'features/send_notification/presentation/cubit/send_notification_cubit.dart';
@@ -46,7 +49,9 @@ class TakafulAdmin extends StatelessWidget {
         BlocProvider(create: (context) => AddImageCubit()),
         BlocProvider(create: (context) => GetRequestCubit()),
         BlocProvider(create: (context) => GetVerificationRequestsCubit()),
-        BlocProvider(create: (context) => ManageVerificationAccountCubit())
+        BlocProvider(create: (context) => ManageVerificationAccountCubit()),
+        BlocProvider(create: (context) => GetAdCubit()),
+        BlocProvider(create: (context) => AddAdCubit()),
       ],
       child: MaterialApp(
           debugShowCheckedModeBanner: false,

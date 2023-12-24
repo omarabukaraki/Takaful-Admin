@@ -65,6 +65,7 @@ abstract class AppString {
   static const String textBanUser = 'حظر المستخدم';
   static const String textDeletePost = 'حذف الإعلان';
   static const String textAccountVerificationRequest = 'طلبات توثيق الحساب';
+  static const String textManageApplicationAd = 'إدارة إعلانات التطبيق';
   static const String textManageApplication = 'إدارة التطبيق';
   static const String textAddCategory = 'إضافة قسم';
   static const String textAnalitices = 'الإحصائيات';

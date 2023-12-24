@@ -14,7 +14,7 @@ class AddImageButton extends StatelessWidget {
         margin: const EdgeInsets.symmetric(
             // horizontal: 10,
             vertical: 10),
-        // width: double.infinity,
+        width: double.infinity,
         // height: 164,
         decoration: BoxDecoration(
             color: AppColor.kPrimary, borderRadius: BorderRadius.circular(20)),

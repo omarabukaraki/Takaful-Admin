@@ -5,6 +5,7 @@ import 'package:takaful_admin1/features/add_category/presentation/view/add_categ
 import 'package:takaful_admin1/features/ban_user/presentation/view/ban_user_page.dart';
 import 'package:takaful_admin1/features/delete_post/presentation/view/delete_post_page.dart';
 import 'package:takaful_admin1/features/home/presentation/view/widgets/custom_list_tile.dart';
+import 'package:takaful_admin1/features/manage_ad/presnentation/view/manage_ad_page.dart';
 import 'package:takaful_admin1/features/manage_post_request/presentation/views/manage_post_request_page.dart';
 
 import '../../../account_verification_request/presnentation/view/account_verification_request_page.dart';
@@ -25,10 +26,11 @@ class _HomePageState extends State<HomePage> {
     DeletePostPage(),
     BanUserPage(),
     AccountVerificationRequestsPage(),
+    ManageAdPage(),
     AddCategoryPage(),
     GenerateAnalyticsPage(),
   ];
-  int index = 6;
+  int index = 7;
   String appBarTitle = 'الإحصائيات';
   @override
   Widget build(BuildContext context) {
@@ -167,6 +169,17 @@ class _HomePageState extends State<HomePage> {
                   onTap: () {
                     setState(() {
                       index = 5;
+                      appBarTitle = AppString.textManageApplicationAd;
+                    });
+                  },
+                  title: AppString.textManageApplicationAd,
+                  mainIcon: Icons.manage_accounts_outlined,
+                  size: 19,
+                ),
+                CustomListTile(
+                  onTap: () {
+                    setState(() {
+                      index = 6;
                       appBarTitle = AppString.textAddCategory;
                     });
                   },
@@ -177,7 +190,7 @@ class _HomePageState extends State<HomePage> {
                 CustomListTile(
                   onTap: () {
                     setState(() {
-                      index = 6;
+                      index = 7;
                       appBarTitle = AppString.textAnalitices;
                     });
                   },
