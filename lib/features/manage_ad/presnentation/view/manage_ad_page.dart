@@ -14,6 +14,7 @@ import '../../../add_category/presentation/cubit/add_image_cubit/add_image_cubit
 import '../../../add_category/presentation/view/widget/add_image_button.dart';
 import '../../../add_category/presentation/view/widget/edit_image_component.dart';
 import '../../../manage_post_request/presentation/views/widgets/post_details_widget/title_post_details_page.dart';
+import 'widget/custom_delete_awsome_dialog.dart';
 import 'widget/delete_ad_component.dart';
 
 class ManageAdPage extends StatefulWidget {
@@ -43,7 +44,7 @@ class _ManageAdPageState extends State<ManageAdPage> {
             const Expanded(
               child: VerticalDivider(
                 thickness: 2,
-                indent: 10,
+                indent: 35,
                 endIndent: 20,
               ),
             ),
@@ -144,6 +145,7 @@ class Ads extends StatefulWidget {
 
 class _AdsState extends State<Ads> {
   List<AdModel> ads = [];
+  List<String> adsId = [];
   bool isLoding = false;
 
   @override
@@ -154,6 +156,7 @@ class _AdsState extends State<Ads> {
           isLoding = true;
         } else if (state is GetAdSuccessState) {
           ads = state.adList;
+          adsId = state.adIdList;
         } else if (state is GetAdFailureState) {}
       },
       builder: (context, state) {
@@ -179,7 +182,15 @@ class _AdsState extends State<Ads> {
                         height: MediaQuery.of(context).size.height / 3,
                         child: DeleteAdComponent(
                           imageUrl: ads[index].image,
-                          onTap: () {},
+                          onTap: () {
+                            customDeleteDialog(
+                                context: context,
+                                dialogBody: 'تاكيد الحذف',
+                                btnOkOnPress: () async {
+                                  await BlocProvider.of<GetAdCubit>(context)
+                                      .deleteAd(adId: adsId[index]);
+                                }).show();
+                          },
                         ),
                       );
                     },

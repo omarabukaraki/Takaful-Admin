@@ -7,9 +7,10 @@ final class GetAdInitialState extends GetAdState {}
 final class GetAdLodingState extends GetAdState {}
 
 final class GetAdSuccessState extends GetAdState {
-  List<AdModel> adList = [];
+  List<AdModel> adList;
+  List<String> adIdList;
 
-  GetAdSuccessState(this.adList);
+  GetAdSuccessState({required this.adList, required this.adIdList});
 }
 
 final class GetAdFailureState extends GetAdState {}

@@ -31,5 +31,6 @@ AwesomeDialog customDialog(
     btnOkOnPress: () {
       print('');
     },
+    // btnCancelOnPress: (){}
   );
 }
