@@ -6,6 +6,7 @@ import 'package:takaful_admin1/features/manage_post_request/data/post_model.dart
 import 'package:takaful_admin1/features/manage_post_request/presentation/cubits/get_post_cubit/get_post_cubit.dart';
 import 'package:takaful_admin1/features/manage_post_request/presentation/cubits/get_post_cubit/get_post_state.dart';
 
+import '../../../../core/helper/snak_bar.dart';
 import '../../../manage_post_request/presentation/views/widgets/post_widget/post_component.dart';
 import 'delete_post_details_page.dart';
 
@@ -39,6 +40,7 @@ class _DeletePostPageState extends State<DeletePostPage> {
           isLoading = true;
         } else if (state is GetPostFailureState) {
           isLoading = false;
+          showSankBar(context, AppString.textErrorOccurredPleaseTryLater);
         }
       },
       builder: (context, state) {
@@ -66,10 +68,6 @@ class _DeletePostPageState extends State<DeletePostPage> {
                             return DonationComponent(
                                 post: posts[index],
                                 onTapRequest: () {
-                                  // Navigator.of(context)
-                                  //     .push(MaterialPageRoute(builder: (context) {
-                                  //   return const DeletePostDetailsPage();
-                                  // }));
                                   showDialog(
                                     barrierColor: Colors.transparent,
                                     context: context,

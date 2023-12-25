@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:takaful_admin1/core/utils/app_colors.dart';
 
+import '../../../../../core/utils/app_strings.dart';
+
 class AddImagesComponent extends StatelessWidget {
   const AddImagesComponent(
       {super.key,
@@ -33,11 +35,11 @@ class AddImagesComponent extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           Text(
-            textOne ?? 'الصورة الرئيسية',
+            textOne ?? AppString.textMainImage,
             style: TextStyle(color: AppColor.kWhite, fontSize: fontSize ?? 14),
           ),
           isOneText != true
-              ? Text(textTwo ?? '(مطلوب)',
+              ? Text(textTwo ?? '(${AppString.textRequired})',
                   style: const TextStyle(color: AppColor.kWhite, fontSize: 12))
               : const SizedBox()
         ],

@@ -2,11 +2,11 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:takaful_admin1/core/utils/app_colors.dart';
 
+import '../../../../../core/utils/app_strings.dart';
+
 AwesomeDialog customDeleteDialog({
   required BuildContext context,
   required String dialogBody,
-  // required void Function(DismissType)? onDismissCallback,
-  //required DialogType dialogType
   required void Function()? btnOkOnPress,
 }) {
   return AwesomeDialog(
@@ -23,12 +23,10 @@ AwesomeDialog customDeleteDialog({
           ),
         ),
       ),
-      btnOkText: 'حذف',
-      btnCancelText: 'إالغاء',
-      // onDismissCallback: onDismissCallback,
+      btnOkText: AppString.textDelete,
+      btnCancelText: AppString.textCancellation,
       btnOkColor: AppColor.kRed,
       btnCancelColor: AppColor.kPrimary,
-      // ignore: avoid_print
       btnOkOnPress: btnOkOnPress,
       btnCancelOnPress: () {});
 }

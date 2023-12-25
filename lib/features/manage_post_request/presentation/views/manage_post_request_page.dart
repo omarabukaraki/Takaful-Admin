@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:takaful_admin1/core/helper/snak_bar.dart';
 import 'package:takaful_admin1/core/utils/app_strings.dart';
 import 'package:takaful_admin1/core/widget/custom_search_bar.dart';
 import 'package:takaful_admin1/features/manage_post_request/data/post_model.dart';
@@ -37,118 +38,76 @@ class _ManagePostReqPageState extends State<ManagePostReqPage> {
           isLoading = false;
         } else if (state is GetPostFailureState) {
           isLoading = false;
+          showSankBar(context, AppString.textErrorOccurredPleaseTryLater);
         }
       },
       builder: (context, state) {
         return Scaffold(
-            body: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 30.0),
-                child: Column(
-                  children: [
-                    CustomSearchBar(
-                      hintText: AppString.textSearchInPosts,
-                      icon: const Icon(Icons.search),
-                      onChanged: (searchValue) {
-                        BlocProvider.of<GetPostCubit>(context).getPostsBySearch(
-                            searchValue: searchValue, getAllPost: false);
-                      },
+          body: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 30.0),
+            child: Column(
+              children: [
+                // start search bar
+                CustomSearchBar(
+                  hintText: AppString.textSearchInPosts,
+                  icon: const Icon(Icons.search),
+                  onChanged: (searchValue) {
+                    BlocProvider.of<GetPostCubit>(context).getPostsBySearch(
+                        searchValue: searchValue, getAllPost: false);
+                  },
+                ),
+                // end search bar
+
+                //start post list
+                Expanded(
+                  child: GridView.builder(
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      childAspectRatio: 2,
                     ),
-                    Expanded(
-                      child: GridView.builder(
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                          childAspectRatio: 2,
-                        ),
-                        itemCount: posts.length,
-                        itemBuilder: (context, index) {
-                          return DonationComponent(
-                            post: posts[index],
-                            onTapRequest: () {
-                              showDialog(
-                                barrierColor: Colors.transparent,
-                                context: context,
-                                builder: (context) => Row(
-                                  children: [
-                                    Container(
-                                      height: MediaQuery.of(context)
-                                                  .viewInsets
-                                                  .bottom ==
-                                              0
-                                          ? MediaQuery.of(context).size.height
-                                          : 0,
-                                      color: Colors.amber,
-                                      width: MediaQuery.of(context).size.width -
-                                          MediaQuery.of(context).size.width / 4,
-                                      child: PostPage(
-                                        post: posts[index],
-                                        postId: postsId[index],
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      width:
-                                          MediaQuery.of(context).size.width / 4,
-                                    ),
-                                  ],
+                    itemCount: posts.length,
+                    itemBuilder: (context, index) {
+                      return DonationComponent(
+                        post: posts[index],
+                        onTapRequest: () {
+                          showDialog(
+                            barrierColor: Colors.transparent,
+                            context: context,
+                            builder: (context) => Row(
+                              children: [
+                                Container(
+                                  height: MediaQuery.of(context)
+                                              .viewInsets
+                                              .bottom ==
+                                          0
+                                      ? MediaQuery.of(context).size.height
+                                      : 0,
+                                  color: Colors.amber,
+                                  width: MediaQuery.of(context).size.width -
+                                      MediaQuery.of(context).size.width / 4,
+                                  child: PostPage(
+                                    post: posts[index],
+                                    postId: postsId[index],
+                                  ),
                                 ),
-                              );
-                            },
+                                SizedBox(
+                                  width: MediaQuery.of(context).size.width / 4,
+                                ),
+                              ],
+                            ),
                           );
                         },
-                      ),
-                    ),
-                  ],
-                )));
+                      );
+                    },
+                  ),
+                ),
+                //end post list
+              ],
+            ),
+          ),
+        );
       },
     );
   }
-//    Widget build(BuildContext context) {
-//     return Scaffold(
-//         body: Padding(
-//             padding: const EdgeInsets.symmetric(horizontal: 30.0),
-//             child: Column(
-//               children: [
-//                 const CustomSearchBar(
-//                     hintText: AppString.textSearchInPosts,
-//                     icon: Icon(Icons.search)),
-//                 Expanded(
-//                   child: GridView.builder(
-//                     gridDelegate:
-//                         const SliverGridDelegateWithFixedCrossAxisCount(
-//                       crossAxisCount: 2,
-//                       childAspectRatio: 2,
-//                     ),
-//                     itemCount: 8,
-//                     itemBuilder: (context, index) {
-//                       return DonationComponent(onTapRequest: () {
-//                         // Navigator.of(context)
-//                         //     .push(MaterialPageRoute(builder: (context) {
-//                         //   return const PostPage();
-
-//                         // }));
-//                         showDialog(
-//                           barrierColor: Colors.transparent,
-//                           context: context,
-//                           builder: (context) => Row(
-//                             children: [
-//                               Container(
-//                                 color: Colors.amber,
-//                                 width: MediaQuery.of(context).size.width -
-//                                     MediaQuery.of(context).size.width / 4,
-//                                 child: const PostPage(),
-//                               ),
-//                               SizedBox(
-//                                 width: MediaQuery.of(context).size.width / 4,
-//                               ),
-//                             ],
-//                           ),
-//                         );
-//                       });
-//                     },
-//                   ),
-//                 ),
-//               ],
-//             )));
-//   }
-// }
 }

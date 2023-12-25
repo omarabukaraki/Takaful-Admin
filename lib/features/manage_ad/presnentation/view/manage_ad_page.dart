@@ -10,6 +10,7 @@ import 'package:takaful_admin1/features/manage_ad/presnentation/cubit/add_ad_cub
 import 'package:takaful_admin1/features/manage_ad/presnentation/cubit/get_ad_cubit/get_ad_cubit.dart';
 import 'package:takaful_admin1/features/manage_ad/presnentation/cubit/get_ad_cubit/get_ad_state.dart';
 
+import '../../../../core/utils/app_strings.dart';
 import '../../../add_category/presentation/cubit/add_image_cubit/add_image_cubit.dart';
 import '../../../add_category/presentation/view/widget/add_image_button.dart';
 import '../../../add_category/presentation/view/widget/edit_image_component.dart';
@@ -52,11 +53,11 @@ class _ManageAdPageState extends State<ManageAdPage> {
               flex: 5,
               child: BlocConsumer<AddImageCubit, AddImageState>(
                 listener: (context, state) {
-                  if (state is AddImageSuccess) {
+                  if (state is AddImageLoading) {
+                    isLoading = true;
+                  } else if (state is AddImageSuccess) {
                     imageUrl = state.url;
                     isLoading = false;
-                  } else if (state is AddImageLoading) {
-                    isLoading = true;
                   }
                 },
                 builder: (context, state) {
@@ -64,7 +65,7 @@ class _ManageAdPageState extends State<ManageAdPage> {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       const TitleDonationDetailsPage(
-                        text: 'إضافة أعلان',
+                        text: AppString.textAddAd,
                       ),
                       SizedBox(
                         height: MediaQuery.of(context).size.height / 3,
@@ -77,7 +78,7 @@ class _ManageAdPageState extends State<ManageAdPage> {
                                           .pickImageFromGallery();
                                     },
                                     icon: Icons.camera_enhance,
-                                    text: 'اضف صورة',
+                                    text: AppString.textAddAdImage,
                                   )
                                 : EditImageComponent(
                                     imageUrl: imageUrl,
@@ -103,7 +104,7 @@ class _ManageAdPageState extends State<ManageAdPage> {
                       ),
                       CustomButton(
                         height: 75,
-                        text: 'إضافة إعلان',
+                        text: AppString.textAddAd,
                         horizontalPadding: double.infinity,
                         color: AppColor.kPrimary,
                         textColor: AppColor.kWhite,
@@ -117,7 +118,7 @@ class _ManageAdPageState extends State<ManageAdPage> {
                           } else {
                             showSankBar(
                               context,
-                              'صورة الإعلان مطلوبة',
+                              AppString.textAdImageRequered,
                             );
                           }
                         },
@@ -157,7 +158,9 @@ class _AdsState extends State<Ads> {
         } else if (state is GetAdSuccessState) {
           ads = state.adList;
           adsId = state.adIdList;
-        } else if (state is GetAdFailureState) {}
+        } else if (state is GetAdFailureState) {
+          showSankBar(context, AppString.textErrorOccurredPleaseTryLater);
+        }
       },
       builder: (context, state) {
         return Expanded(
@@ -166,7 +169,7 @@ class _AdsState extends State<Ads> {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               const TitleDonationDetailsPage(
-                text: 'حذف الإعلان',
+                text: AppString.textDeletePost,
               ),
               Expanded(
                 child: BlurryModalProgressHUD(
@@ -185,7 +188,7 @@ class _AdsState extends State<Ads> {
                           onTap: () {
                             customDeleteDialog(
                                 context: context,
-                                dialogBody: 'تاكيد الحذف',
+                                dialogBody: AppString.textConfirmDeletion,
                                 btnOkOnPress: () async {
                                   await BlocProvider.of<GetAdCubit>(context)
                                       .deleteAd(adId: adsId[index]);

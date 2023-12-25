@@ -12,6 +12,8 @@ import 'package:takaful_admin1/features/add_category/presentation/cubit/get_serv
 import 'package:takaful_admin1/features/add_category/presentation/view/widget/category_menu.dart';
 import 'package:takaful_admin1/features/add_category/presentation/view/widget/title_add_category_page.dart';
 
+import '../../../../core/helper/snak_bar.dart';
+
 class AddCategoryPage extends StatefulWidget {
   const AddCategoryPage({super.key});
 
@@ -73,6 +75,7 @@ class _ServiceCategoriesState extends State<ServiceCategories> {
           isLoding = false;
         } else if (state is GetServiceCategoryFaliuerState) {
           isLoding = false;
+          showSankBar(context, AppString.textErrorOccurredPleaseTryLater);
         }
       },
       builder: (context, state) {
@@ -133,6 +136,7 @@ class _ItemCategoriesState extends State<ItemCategories> {
           isLodingItem = false;
         } else if (state is GetItemCategoryFaliuerState) {
           isLodingItem = false;
+          showSankBar(context, AppString.textErrorOccurredPleaseTryLater);
         }
       },
       builder: (context, state) {

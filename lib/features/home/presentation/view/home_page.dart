@@ -82,11 +82,11 @@ class _HomePageState extends State<HomePage> {
           SizedBox(
             width: MediaQuery.of(context).size.width -
                 MediaQuery.of(context).size.width / 4,
-            child:
-                //const PostPage(),
-                // const DeletePostDetailsPage(),
-                screen[index],
+            child: screen[index],
           ),
+
+          //start sidebar
+
           Drawer(
             width: MediaQuery.of(context).size.width / 4,
             shape: const ContinuousRectangleBorder(
@@ -99,66 +99,73 @@ class _HomePageState extends State<HomePage> {
             child: ListView(
               padding: const EdgeInsets.symmetric(vertical: 22, horizontal: 14),
               children: [
+                //start manage user list
+
                 const CustomListTile(
                     title: AppString.textManageUsers,
                     mainIcon: Icons.manage_accounts_outlined,
                     isleadingIcon: true),
                 const Divider(height: 2),
                 CustomListTile(
+                  title: AppString.textManageUserPosts,
+                  mainIcon: Icons.manage_accounts_outlined,
+                  size: 19,
                   onTap: () {
                     setState(() {
                       index = 0;
                       appBarTitle = AppString.textManageUserPosts;
                     });
                   },
-                  title: AppString.textManageUserPosts,
-                  mainIcon: Icons.manage_accounts_outlined,
-                  size: 19,
                 ),
                 CustomListTile(
+                  title: AppString.textSendNotiToUsers,
+                  mainIcon: Icons.manage_accounts_outlined,
+                  size: 19,
                   onTap: () {
                     setState(() {
                       index = 1;
                       appBarTitle = AppString.textSendNotiToUsers;
                     });
                   },
-                  title: AppString.textSendNotiToUsers,
-                  mainIcon: Icons.manage_accounts_outlined,
-                  size: 19,
                 ),
                 CustomListTile(
+                  title: AppString.textDeletePost,
+                  mainIcon: Icons.manage_accounts_outlined,
+                  size: 19,
                   onTap: () {
                     setState(() {
                       index = 2;
                       appBarTitle = AppString.textDeletePost;
                     });
                   },
-                  title: AppString.textDeletePost,
-                  mainIcon: Icons.manage_accounts_outlined,
-                  size: 19,
                 ),
                 CustomListTile(
+                  title: AppString.textBanUser,
+                  mainIcon: Icons.manage_accounts_outlined,
+                  size: 19,
                   onTap: () {
                     setState(() {
                       index = 3;
                       appBarTitle = AppString.textBanUser;
                     });
                   },
-                  title: AppString.textBanUser,
-                  mainIcon: Icons.manage_accounts_outlined,
-                  size: 19,
                 ),
                 CustomListTile(
+                  title: AppString.textAccountVerificationRequest,
+                  mainIcon: Icons.manage_accounts_outlined,
+                  size: 19,
                   onTap: () {
                     setState(() {
                       index = 4;
                       appBarTitle = AppString.textAccountVerificationRequest;
                     });
                   },
-                  title: AppString.textAccountVerificationRequest,
-                  mainIcon: Icons.manage_accounts_outlined,
-                  size: 19,
                 ),
+
+                //end manage user list
+
+                //start manage app list
+
                 const CustomListTile(
                   title: AppString.textManageApplication,
                   mainIcon: Icons.manage_accounts_outlined,
@@ -166,41 +173,45 @@ class _HomePageState extends State<HomePage> {
                 ),
                 const Divider(height: 2),
                 CustomListTile(
+                  title: AppString.textManageApplicationAd,
+                  mainIcon: Icons.manage_accounts_outlined,
+                  size: 19,
                   onTap: () {
                     setState(() {
                       index = 5;
                       appBarTitle = AppString.textManageApplicationAd;
                     });
                   },
-                  title: AppString.textManageApplicationAd,
-                  mainIcon: Icons.manage_accounts_outlined,
-                  size: 19,
                 ),
                 CustomListTile(
+                  title: AppString.textAddCategory,
+                  mainIcon: Icons.manage_accounts_outlined,
+                  size: 19,
                   onTap: () {
                     setState(() {
                       index = 6;
                       appBarTitle = AppString.textAddCategory;
                     });
                   },
-                  title: AppString.textAddCategory,
-                  mainIcon: Icons.manage_accounts_outlined,
-                  size: 19,
                 ),
                 CustomListTile(
+                  title: AppString.textAnalitices,
+                  mainIcon: Icons.manage_accounts_outlined,
+                  size: 19,
                   onTap: () {
                     setState(() {
                       index = 7;
                       appBarTitle = AppString.textAnalitices;
                     });
                   },
-                  title: AppString.textAnalitices,
-                  mainIcon: Icons.manage_accounts_outlined,
-                  size: 19,
                 ),
+
+                //end manage app list
               ],
             ),
-          )
+          ),
+
+          //end sidebar
         ],
       ),
     );

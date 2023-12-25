@@ -3,6 +3,8 @@ import 'package:takaful_admin1/features/manage_post_request/data/post_model.dart
 import 'package:takaful_admin1/features/manage_post_request/presentation/views/widgets/post_details_widget/post_details_info_component.dart';
 import 'package:takaful_admin1/features/manage_post_request/presentation/views/widgets/post_details_widget/title_post_details_page.dart';
 
+import '../../../../../../core/utils/app_strings.dart';
+
 class PostDetailsInformation extends StatelessWidget {
   const PostDetailsInformation({
     super.key,
@@ -24,11 +26,11 @@ class PostDetailsInformation extends StatelessWidget {
                 ),
                 PostDetailsInformationComponent(
                     data: '${post.location} - ${post.subLocation}',
-                    section: 'الموقع'),
+                    section: AppString.textLocation),
                 PostDetailsInformationComponent(
                   data: post.createAt!.substring(0, 16),
-                  section: 'تاريخ النشر',
-                )
+                  section: AppString.textPublishDate,
+                ),
               ],
             ),
           ),
@@ -42,21 +44,21 @@ class PostDetailsInformation extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     TitleDonationDetailsPage(
-                      text: 'المعلومات',
+                      text: AppString.textInformation,
                     ),
                   ],
                 ),
                 PostDetailsInformationComponent(
                   data: '${post.category} , ${post.itemOrService}',
-                  section: 'القسم',
+                  section: AppString.textSection,
                 ),
                 PostDetailsInformationComponent(
                   data: post.state,
-                  section: 'الحالة',
+                  section: AppString.textState,
                 ),
               ],
             ),
-          )
+          ),
         ],
       ),
     );

@@ -32,7 +32,7 @@ class _PostPageState extends State<PostPage> {
         appBar: AppBar(
           surfaceTintColor: Colors.transparent,
           title: const Text(
-            'الإعلان',
+            AppString.textPost,
             style: TextStyle(fontSize: 32, color: AppColor.kPrimary),
           ),
           centerTitle: true,
@@ -63,7 +63,7 @@ class _PostPageState extends State<PostPage> {
                             maxLines: 2,
                           ),
                           PostDetailsButton(
-                            text: 'نشر الإعلان',
+                            text: AppString.textPublishPost,
                             onTap: () async {
                               await BlocProvider.of<ManagePostCubit>(context)
                                   .acceptPost(
@@ -82,7 +82,7 @@ class _PostPageState extends State<PostPage> {
                             textColor: AppColor.kWhite,
                           ),
                           PostDetailsButton(
-                            text: 'رفض النشر',
+                            text: AppString.textRejectPublish,
                             onTap: () async {
                               await BlocProvider.of<ManagePostCubit>(context)
                                   .rejectPost(postId: widget.postId);
@@ -179,7 +179,7 @@ class _PostPageState extends State<PostPage> {
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
                           const TitleDonationDetailsPage(
-                            text: 'حساب المتبرع',
+                            text: AppString.textAdvertiserAccount,
                           ),
                           DonarAccountBox(
                               donarAccount: widget.post.donarAccount!),
@@ -193,7 +193,7 @@ class _PostPageState extends State<PostPage> {
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
                             const TitleDonationDetailsPage(
-                              text: 'الوصف',
+                              text: AppString.textDescription,
                             ),
                             DescriptionBox(
                               postDescription: widget.post.description!,
@@ -207,25 +207,4 @@ class _PostPageState extends State<PostPage> {
           ),
         ));
   }
-
-  // AwesomeDialog CustomDialog(BuildContext context) {
-  //   return AwesomeDialog(
-  //     width: 400,
-  //     context: context,
-  //     animType: AnimType.scale,
-  //     dialogType: DialogType.success,
-  //     body: const Padding(
-  //       padding: EdgeInsets.all(8.0),
-  //       child: Center(
-  //         child: Text(
-  //           'لقد تم نشر الإعلان بنجاح',
-  //         ),
-  //       ),
-  //     ),
-  //     btnOkText: 'تم',
-  //     title: '',
-  //     desc: '',
-  //     btnOkOnPress: () {},
-  //   );
-  // }
 }

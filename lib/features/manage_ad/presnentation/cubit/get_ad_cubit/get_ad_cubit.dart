@@ -10,19 +10,25 @@ class GetAdCubit extends Cubit<GetAdState> {
   void getAds() {
     emit(GetAdLodingState());
 
-    ad.orderBy('createAt').snapshots().listen((event) {
-      List<AdModel> adList = [];
-      List<String> adIdList = [];
-      for (var element in event.docs) {
-        adList.add(AdModel.fromJson(element));
-        adIdList.add(element.id);
-      }
+    try {
+      ad.orderBy('createAt').snapshots().listen((event) {
+        List<AdModel> adList = [];
+        List<String> adIdList = [];
+        for (var element in event.docs) {
+          adList.add(AdModel.fromJson(element));
+          adIdList.add(element.id);
+        }
 
-      emit(GetAdSuccessState(
-        adList: adList,
-        adIdList: adIdList,
-      ));
-    });
+        emit(
+          GetAdSuccessState(
+            adList: adList,
+            adIdList: adIdList,
+          ),
+        );
+      });
+    } catch (e) {
+      emit(GetAdFailureState());
+    }
   }
 
   Future<void> deleteAd({required String adId}) async {

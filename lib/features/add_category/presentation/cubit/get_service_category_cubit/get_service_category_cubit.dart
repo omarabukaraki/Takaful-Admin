@@ -20,18 +20,5 @@ class GetServiceCategoryCubit extends Cubit<GetServiceCategoryState> {
       categoryList.add(CategoryModel());
       emit(GetServiceCategorySeccState(categoryList));
     });
-    // FirebaseFirestore.instance
-    //     .collection('service category')
-    //     .orderBy('createAt')
-    //     .get()
-    //     .then((value) {
-    //   for (var element in value.docs) {
-    //     categoryList.add(CategoryModel.fromJson(element.data()));
-    //   }
-    //   categoryList.add(CategoryModel());
-    //   emit(GetServiceCategorySeccState(categoryList));
-    // }).catchError((onError) {
-    //   emit(GetServiceCategoryFaliuerState());
-    // });
   }
 }

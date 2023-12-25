@@ -81,4 +81,28 @@ abstract class AppString {
   static const String monthlyRequestsAnalysis = 'احصائيات الطلبات شهريا';
   static const String monthlyUsersAnalysis = 'احصائيات المستخدمين شهريا';
   static const String textView = 'عرض';
+  static const String textErrorOccurredPleaseTryLater =
+      'حدث خطأ، الرجاء المحاولة لاحقا';
+  static const String textPost = 'الإعلان';
+  static const String textPublishPost = 'نشر الإعلان';
+  static const String textRejectPublish = 'نشر الإعلان';
+  static const String textAdvertiserAccount = 'حساب المعلن';
+  static const String textAddAd = 'إضافة إعلان';
+  static const String textAddAdImage = 'أضف صورة للإعلان';
+  static const String textAdImageRequered = 'صورة الإعلان مطلوبة';
+  static const String textConfirmDeletion = 'تاكيد الحذف';
+  static const String textDelete = 'حذف';
+  static const String textCancellation = 'إلغاء';
+  static const String textReasonForDeletion = 'سبب الحذف';
+  static const String textThePostSuccessfullyDeleted =
+      'لقد نم حذف الإعلان بنجاح';
+  static const String textMainImage = 'الصورة الرئيسية';
+  static const String textPicturesAddedSuccessfully = 'تم إضافة الصورة بنجاح';
+  static const String textCategoryName = 'اسم القسم';
+  static const String textAddCategoryImage = 'أضف صورة القسم';
+  static const String textCategoryDescription = 'وصف القسم';
+  static const String textOrderInformation = 'معلومات الطلب';
+  static const String textCharityAccount = 'حساب الجمعية';
+  static const String textCharityAssociationRegistrationDocument =
+      'وثيقة تسجيل الجمعية';
 }

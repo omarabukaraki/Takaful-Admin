@@ -23,9 +23,7 @@ class PostDetailsButton extends StatelessWidget {
         width: double.infinity,
         height: 65,
         decoration: BoxDecoration(
-            // border: Border.all(color: AppColor.kPrimary, width: 5),
-            borderRadius: BorderRadius.circular(20),
-            color: color),
+            borderRadius: BorderRadius.circular(20), color: color),
         alignment: Alignment.center,
         child: Text(
           text,

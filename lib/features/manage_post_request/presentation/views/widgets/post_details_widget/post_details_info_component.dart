@@ -22,11 +22,12 @@ class PostDetailsInformationComponent extends StatelessWidget {
               color: Colors.black12,
               offset: Offset(0, 2),
               blurRadius: 6,
-            )
+            ),
           ],
           color: Colors.white),
-      child: Row(children: [
-        Expanded(
+      child: Row(
+        children: [
+          Expanded(
             flex: 2,
             child: Text(
               data ?? 'الاستهلاكيات - الطعام',
@@ -37,8 +38,9 @@ class PostDetailsInformationComponent extends StatelessWidget {
               ),
               maxLines: 1,
               overflow: TextOverflow.clip,
-            )),
-        Expanded(
+            ),
+          ),
+          Expanded(
             flex: 1,
             child: Text(
               section ?? 'القسم',
@@ -47,8 +49,10 @@ class PostDetailsInformationComponent extends StatelessWidget {
                 fontSize: 14,
                 color: Colors.black,
               ),
-            ))
-      ]),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

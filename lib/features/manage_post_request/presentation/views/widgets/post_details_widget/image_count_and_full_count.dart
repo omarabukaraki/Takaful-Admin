@@ -23,29 +23,32 @@ class ImageCountAndFullCount extends StatelessWidget {
                 color: Colors.black12, blurRadius: 4, offset: Offset(0, 1))
           ],
         ),
-        child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
-          const Expanded(
-            flex: 3,
-            child: Icon(
-              Icons.image,
-              size: 15,
-              color: Colors.white,
-            ),
-          ),
-          Expanded(
-            flex: 5,
-            child: Padding(
-              padding: const EdgeInsets.all(3),
-              child: Text(
-                '$countImage / $fullCountImage',
-                style: const TextStyle(
-                    fontSize: 11,
-                    color: Colors.white,
-                    overflow: TextOverflow.fade),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            const Expanded(
+              flex: 3,
+              child: Icon(
+                Icons.image,
+                size: 15,
+                color: Colors.white,
               ),
             ),
-          )
-        ]),
+            Expanded(
+              flex: 5,
+              child: Padding(
+                padding: const EdgeInsets.all(3),
+                child: Text(
+                  '$countImage / $fullCountImage',
+                  style: const TextStyle(
+                      fontSize: 11,
+                      color: Colors.white,
+                      overflow: TextOverflow.fade),
+                ),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

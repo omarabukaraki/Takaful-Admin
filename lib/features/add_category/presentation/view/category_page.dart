@@ -6,6 +6,9 @@ import 'package:takaful_admin1/core/widget/custom_text_field.dart';
 import 'package:takaful_admin1/features/add_category/presentation/cubit/add_category_cubit/add_category_cubit.dart';
 import 'package:takaful_admin1/features/add_category/presentation/cubit/add_image_cubit/add_image_cubit.dart';
 import 'package:takaful_admin1/features/add_category/presentation/view/widget/add_image_button.dart';
+
+import '../../../../core/helper/snak_bar.dart';
+import '../../../../core/utils/app_strings.dart';
 import 'widget/edit_image_component.dart';
 
 class CategoryPage extends StatefulWidget {
@@ -44,7 +47,7 @@ class _CategoryPageState extends State<CategoryPage> {
                       flex: 6,
                       child: CustomTextFiled(
                         horizontalPadding: double.infinity,
-                        hintText: 'اسم القسم',
+                        hintText: AppString.textCategoryName,
                         maxLines: 9,
                         onChanged: (data) {
                           categoryName = data;
@@ -59,7 +62,7 @@ class _CategoryPageState extends State<CategoryPage> {
                           isLoading = false;
                         } else if (state is AddImageLoading) {
                           isLoading = true;
-                        }
+                        } else if (state is AddImageFailure) {}
                       },
                       builder: (context, state) {
                         return Expanded(
@@ -73,7 +76,7 @@ class _CategoryPageState extends State<CategoryPage> {
                                             .pickImageFromGallery();
                                       },
                                       icon: Icons.camera_enhance,
-                                      text: 'اضف صورة',
+                                      text: AppString.textAddCategoryImage,
                                     )
                                   : EditImageComponent(
                                       imageUrl: imageUrl,
@@ -103,7 +106,7 @@ class _CategoryPageState extends State<CategoryPage> {
                 height: MediaQuery.of(context).size.height / 3,
                 child: CustomTextFiled(
                   paddingVertical: 25,
-                  hintText: 'وصف القسم',
+                  hintText: AppString.textCategoryDescription,
                   horizontalPadding: double.infinity,
                   maxLines: 12,
                   onChanged: (data) {
@@ -116,7 +119,7 @@ class _CategoryPageState extends State<CategoryPage> {
                 child: CustomButton(
                   textColor: AppColor.kWhite,
                   color: AppColor.kPrimary,
-                  text: 'إضافة قسم',
+                  text: AppString.textAddCategory,
                   onTap: () async {
                     if (imageUrl != null) {
                       if (formKey.currentState!.validate()) {
@@ -127,7 +130,10 @@ class _CategoryPageState extends State<CategoryPage> {
                         Navigator.pop(context);
                       }
                     } else {
-                      // add a dialog or sank bar to tell admin the image is required
+                      showSankBar(
+                        context,
+                        AppString.textAdImageRequered,
+                      );
                     }
                   },
                   horizontalPadding: double.infinity,

@@ -2,7 +2,9 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:takaful_admin1/core/utils/app_colors.dart';
+import 'package:takaful_admin1/core/utils/app_strings.dart';
 import 'package:takaful_admin1/features/ban_user/data/user_model.dart';
+
 import '../../../../core/widget/custom_button.dart';
 import '../../../manage_post_request/presentation/views/widgets/post_details_widget/post_details_image.dart';
 import '../../../manage_post_request/presentation/views/widgets/post_details_widget/post_details_info_component.dart';
@@ -28,7 +30,7 @@ class AccountVerificationRequestDetailsPage extends StatelessWidget {
         centerTitle: true,
         automaticallyImplyLeading: false,
         title: const Text(
-          'معلومات الطلب',
+          AppString.textOrderInformation,
           style: TextStyle(fontSize: 32, color: AppColor.kPrimary),
         ),
       ),
@@ -42,10 +44,10 @@ class AccountVerificationRequestDetailsPage extends StatelessWidget {
                 Expanded(
                   flex: 8,
                   child: Column(
-                    // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      const TitleDonationDetailsPage(text: 'حساب الجمعية'),
+                      const TitleDonationDetailsPage(
+                          text: AppString.textCharityAccount),
                       CharitiesAccountBox(
                         user: user,
                         vertical: 10,
@@ -58,11 +60,11 @@ class AccountVerificationRequestDetailsPage extends StatelessWidget {
                 Expanded(
                   flex: 8,
                   child: Column(
-                    // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       const TitleDonationDetailsPage(
-                          text: 'وثيقة تسجيل الجمعية'),
+                          text: AppString
+                              .textCharityAssociationRegistrationDocument),
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 10),
                         child: GestureDetector(
