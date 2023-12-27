@@ -53,7 +53,7 @@ class _MonthlyUsersAnalysisComponentState
                 const Legend(isVisible: true, position: LegendPosition.bottom),
             series: [
               LineSeries<UserData, dynamic>(
-                  name: 'المستخدمين',
+                  name: AppString.textUsers,
                   color: AppColor.kRed,
                   dataSource:
                       userData.length < 12 ? [UserData(0, 1)] : userData,
@@ -61,7 +61,7 @@ class _MonthlyUsersAnalysisComponentState
                   yValueMapper: (UserData sales, _) => sales.userNumber),
             ],
             primaryXAxis: const NumericAxis(
-              labelFormat: 'شهر  {value}',
+              labelFormat: '${AppString.textMonth}  {value}',
             ),
             primaryYAxis: const NumericAxis(
               labelFormat: '{value}',

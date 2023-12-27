@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:takaful_admin1/core/utils/app_strings.dart';
+
 import '../../../../manage_post_request/presentation/cubits/get_post_cubit/get_post_cubit.dart';
 import '../../../../manage_post_request/presentation/cubits/get_post_cubit/get_post_state.dart';
 
@@ -53,7 +54,7 @@ class _MonthlyPostAnalysisComponentState
                 const Legend(isVisible: true, position: LegendPosition.bottom),
             series: [
               BarSeries<DonationData, double>(
-                  name: 'الإعلانات',
+                  name: AppString.textPosts,
                   color: const Color.fromARGB(255, 0, 135, 245),
                   dataSource: donationData.length < 12
                       ? [DonationData(0, 1)]
@@ -62,7 +63,7 @@ class _MonthlyPostAnalysisComponentState
                   yValueMapper: (DonationData sales, _) => sales.donationCount)
             ],
             primaryXAxis: const NumericAxis(
-              labelFormat: 'شهر  {value}',
+              labelFormat: '${AppString.textMonth}  {value}',
             ),
             primaryYAxis: const NumericAxis(
               labelFormat: '{value}',

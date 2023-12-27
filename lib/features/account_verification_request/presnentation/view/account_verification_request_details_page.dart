@@ -36,146 +36,150 @@ class AccountVerificationRequestDetailsPage extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(30.0),
-        child: Column(children: [
-          SizedBox(
-            height: MediaQuery.of(context).size.height / 3,
-            child: Row(
-              children: [
-                Expanded(
-                  flex: 8,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      const TitleDonationDetailsPage(
-                          text: AppString.textCharityAccount),
-                      CharitiesAccountBox(
-                        user: user,
-                        vertical: 10,
-                        height: 225,
-                      ),
-                    ],
+        child: Column(
+          children: [
+            SizedBox(
+              height: MediaQuery.of(context).size.height / 3,
+              child: Row(
+                children: [
+                  Expanded(
+                    flex: 8,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        const TitleDonationDetailsPage(
+                            text: AppString.textCharityAccount),
+                        CharitiesAccountBox(
+                          user: user,
+                          vertical: 10,
+                          height: 225,
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                const Expanded(child: SizedBox()),
-                Expanded(
-                  flex: 8,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      const TitleDonationDetailsPage(
-                          text: AppString
-                              .textCharityAssociationRegistrationDocument),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 10),
-                        child: GestureDetector(
-                          onTap: () {
-                            showDialog(
-                              context: context,
-                              builder: (context) {
-                                return CachedNetworkImage(
-                                  imageUrl: image,
-                                  fit: BoxFit.fitHeight,
-                                  progressIndicatorBuilder:
-                                      (context, url, downloadProgress) {
-                                    return CircularProgressIndicator(
-                                        value: downloadProgress.progress);
-                                  },
-                                  errorWidget: (context, url, error) =>
-                                      const Icon(Icons.error),
-                                );
-                              },
-                            );
-                          },
-                          child: Container(
-                            height: 225,
-                            clipBehavior: Clip.antiAlias,
-                            decoration: BoxDecoration(
-                              color: const Color.fromARGB(20, 58, 68, 160),
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            child: PostDetailsImage(
-                              image: image,
+                  const Expanded(child: SizedBox()),
+                  Expanded(
+                    flex: 8,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        const TitleDonationDetailsPage(
+                            text: AppString
+                                .textCharityAssociationRegistrationDocument),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 10),
+                          child: GestureDetector(
+                            onTap: () {
+                              showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return CachedNetworkImage(
+                                    imageUrl: image,
+                                    fit: BoxFit.fitHeight,
+                                    progressIndicatorBuilder:
+                                        (context, url, downloadProgress) {
+                                      return CircularProgressIndicator(
+                                          value: downloadProgress.progress);
+                                    },
+                                    errorWidget: (context, url, error) =>
+                                        const Icon(Icons.error),
+                                  );
+                                },
+                              );
+                            },
+                            child: Container(
+                              height: 225,
+                              clipBehavior: Clip.antiAlias,
+                              decoration: BoxDecoration(
+                                color: const Color.fromARGB(20, 58, 68, 160),
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              child: PostDetailsImage(
+                                image: image,
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                )
-              ],
+                      ],
+                    ),
+                  )
+                ],
+              ),
             ),
-          ),
-          SizedBox(
-            height: MediaQuery.of(context).size.height / 3,
-            child: Row(
-              children: [
-                Expanded(
-                  flex: 8,
-                  child: Column(
-                    children: [
-                      const SizedBox(
-                        height: 27,
-                      ),
-                      CustomButton(
-                        height: 75,
-                        horizontalPadding: double.infinity,
-                        textColor: AppColor.kWhite,
-                        color: AppColor.kRed,
-                        text: 'رفض التوثيق',
-                        onTap: () async {
-                          await BlocProvider.of<ManageVerificationAccountCubit>(
-                                  context)
-                              .rejectVerification(documentId: docId);
-                          // ignore: use_build_context_synchronously
-                          Navigator.pop(context);
-                        },
-                      ),
-                      const SizedBox(
-                        height: 14,
-                      ),
-                      CustomButton(
-                        height: 75,
-                        horizontalPadding: double.infinity,
-                        textColor: AppColor.kWhite,
-                        color: AppColor.kPrimary,
-                        text: 'توثيق الحساب',
-                        onTap: () async {
-                          await BlocProvider.of<ManageVerificationAccountCubit>(
-                                  context)
-                              .acceptVerification(userId: user.id);
-                          // ignore: use_build_context_synchronously
-                          await BlocProvider.of<ManageVerificationAccountCubit>(
-                                  context)
-                              .rejectVerification(documentId: docId);
-                          // ignore: use_build_context_synchronously
-                          Navigator.pop(context);
-                        },
-                      ),
-                    ],
+            SizedBox(
+              height: MediaQuery.of(context).size.height / 3,
+              child: Row(
+                children: [
+                  Expanded(
+                    flex: 8,
+                    child: Column(
+                      children: [
+                        const SizedBox(
+                          height: 27,
+                        ),
+                        CustomButton(
+                          height: 75,
+                          horizontalPadding: double.infinity,
+                          textColor: AppColor.kWhite,
+                          color: AppColor.kRed,
+                          text: AppString.textRefuseToAuthenticate,
+                          onTap: () async {
+                            await BlocProvider.of<
+                                    ManageVerificationAccountCubit>(context)
+                                .rejectVerification(documentId: docId);
+                            // ignore: use_build_context_synchronously
+                            Navigator.pop(context);
+                          },
+                        ),
+                        const SizedBox(
+                          height: 14,
+                        ),
+                        CustomButton(
+                          height: 75,
+                          horizontalPadding: double.infinity,
+                          textColor: AppColor.kWhite,
+                          color: AppColor.kPrimary,
+                          text: AppString.textAccountVerification,
+                          onTap: () async {
+                            await BlocProvider.of<
+                                    ManageVerificationAccountCubit>(context)
+                                .acceptVerification(userId: user.id);
+                            // ignore: use_build_context_synchronously
+                            await BlocProvider.of<
+                                    ManageVerificationAccountCubit>(context)
+                                .rejectVerification(documentId: docId);
+                            // ignore: use_build_context_synchronously
+                            Navigator.pop(context);
+                          },
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                const Expanded(child: SizedBox()),
-                Expanded(
-                  flex: 8,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      const TitleDonationDetailsPage(
-                        text: 'معلومات الحساب',
-                      ),
-                      PostDetailsInformationComponent(
-                          section: 'الاسم', data: user.name),
-                      PostDetailsInformationComponent(
-                          section: 'رقم الهاتف', data: user.mobileNumber),
-                      PostDetailsInformationComponent(
-                          section: 'البريد الإالكتروني', data: user.email),
-                    ],
+                  const Expanded(child: SizedBox()),
+                  Expanded(
+                    flex: 8,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        const TitleDonationDetailsPage(
+                          text: AppString.textAccountDescription,
+                        ),
+                        PostDetailsInformationComponent(
+                            section: AppString.textNameArabic, data: user.name),
+                        PostDetailsInformationComponent(
+                            section: AppString.textMobileNumberArabic,
+                            data: user.mobileNumber),
+                        PostDetailsInformationComponent(
+                            section: AppString.textEmailArabic,
+                            data: user.email),
+                      ],
+                    ),
                   ),
-                ),
-              ],
-            ),
-          )
-        ]),
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

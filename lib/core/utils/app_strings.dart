@@ -80,12 +80,13 @@ abstract class AppString {
   static const String monthlyPostsAnalysis = ' احصائيات الإعلانات شهريا';
   static const String monthlyRequestsAnalysis = 'احصائيات الطلبات شهريا';
   static const String monthlyUsersAnalysis = 'احصائيات المستخدمين شهريا';
+  static const String textMonth = 'شهر';
   static const String textView = 'عرض';
   static const String textErrorOccurredPleaseTryLater =
       'حدث خطأ، الرجاء المحاولة لاحقا';
   static const String textPost = 'الإعلان';
   static const String textPublishPost = 'نشر الإعلان';
-  static const String textRejectPublish = 'نشر الإعلان';
+  static const String textRejectPublish = 'رفض النشر';
   static const String textAdvertiserAccount = 'حساب المعلن';
   static const String textAddAd = 'إضافة إعلان';
   static const String textAddAdImage = 'أضف صورة للإعلان';
@@ -105,4 +106,10 @@ abstract class AppString {
   static const String textCharityAccount = 'حساب الجمعية';
   static const String textCharityAssociationRegistrationDocument =
       'وثيقة تسجيل الجمعية';
+  static const String textRefuseToAuthenticate = 'رفض التوثيق';
+  static const String textAccountVerification = 'توثيق الحساب';
+  static const String textAccountDescription = 'معلومات الحساب';
+  static const String textPosts = 'الإعلانات';
+  static const String textRequests = 'الطلبات';
+  static const String textUsers = 'المستخدمين';
 }
