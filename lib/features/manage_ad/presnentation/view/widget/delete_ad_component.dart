@@ -17,6 +17,7 @@ class DeleteAdComponent extends StatelessWidget {
         children: [
           Container(
             width: double.infinity,
+            height: double.infinity,
             margin: const EdgeInsets.symmetric(vertical: 10),
             clipBehavior: Clip.antiAlias,
             decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
@@ -24,7 +25,7 @@ class DeleteAdComponent extends StatelessWidget {
               image: CachedNetworkImageProvider(
                 imageUrl!,
               ),
-              fit: BoxFit.cover,
+              fit: BoxFit.fill,
             ),
           ),
           Container(
