@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -66,6 +67,9 @@ class _SendNotificationPageState extends State<SendNotificationPage> {
                 if (formKey.currentState!.validate()) {
                   await BlocProvider.of<SendNotificationCubit>(context)
                       .addNotification(
+                          userId: 'all',
+                          typeOfNotification: 'SNFA',
+                          donarEmail: FirebaseAuth.instance.currentUser!.email!,
                           titleNotification: titleNotification.text,
                           bodyNotification: bodyNotification.text);
                   clearTextController();

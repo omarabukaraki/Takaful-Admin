@@ -81,9 +81,11 @@ class _DeletePostPageState extends State<DeletePostPage> {
                                                       .size
                                                       .width /
                                                   4,
-                                          child: DeletePostDetailsPage(
-                                              post: posts[index],
-                                              postId: postsId[index]),
+                                          child: posts.isNotEmpty
+                                              ? DeletePostDetailsPage(
+                                                  post: posts[index],
+                                                  postId: postsId[index])
+                                              : const SizedBox(),
                                         ),
                                         SizedBox(
                                           width: MediaQuery.of(context)
