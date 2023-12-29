@@ -28,4 +28,23 @@ class GetVerificationRequestsCubit extends Cubit<GetVerificationRequestsState> {
       emit(GetVerificationRequestsFailure());
     }
   }
+  //   void getUsersBySearch({required String searchValue}) {
+  //   emit(GetUsersLoading());
+  //   try {
+  //     users
+  //         .orderBy('name')
+  //         .startAt([searchValue])
+  //         .endAt(["$searchValue\uf8ff"])
+  //         .snapshots()
+  //         .listen((event) {
+  //           List<UserModel> usersList = [];
+  //           for (var doc in event.docs) {
+  //             usersList.add(UserModel.fromJson(doc));
+  //           }
+  //           emit(GetUsersSuccess(users: usersList));
+  //         });
+  //   } catch (e) {
+  //     emit(GetUsersFailure());
+  //   }
+  // }
 }
