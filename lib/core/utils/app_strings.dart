@@ -67,6 +67,7 @@ abstract class AppString {
   static const String textAccountVerificationRequest = 'طلبات توثيق الحساب';
   static const String textManageApplicationAd = 'إدارة إعلانات التطبيق';
   static const String textManageApplication = 'إدارة التطبيق';
+  static const String textManageCategories = 'إدارة الأقسام';
   static const String textAddCategory = 'إضافة قسم';
   static const String textAnalitices = 'الإحصائيات';
   static const String textSearchInPosts = 'إبحث في التبرعات';

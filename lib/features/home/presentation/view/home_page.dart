@@ -187,13 +187,13 @@ class _HomePageState extends State<HomePage> {
                   },
                 ),
                 CustomListTile(
-                  title: AppString.textAddCategory,
+                  title: AppString.textManageCategories,
                   mainIcon: Icons.category_outlined,
                   size: 19,
                   onTap: () {
                     setState(() {
                       index = 5;
-                      appBarTitle = AppString.textAddCategory;
+                      appBarTitle = AppString.textManageCategories;
                     });
                   },
                 ),
