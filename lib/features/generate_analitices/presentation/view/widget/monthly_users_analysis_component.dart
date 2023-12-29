@@ -48,12 +48,12 @@ class _MonthlyUsersAnalysisComponentState
                   MediaQuery.of(context).size.width / 4) /
               2.2,
           child: SfCartesianChart(
-            title: const ChartTitle(text: AppString.monthlyUsersAnalysis),
+            title: const ChartTitle(text: AppString.monthlyNewUsersAnalysis),
             legend:
                 const Legend(isVisible: true, position: LegendPosition.bottom),
             series: [
               LineSeries<UserData, dynamic>(
-                  name: AppString.textUsers,
+                  name: AppString.textNewUsers,
                   color: AppColor.kRed,
                   dataSource:
                       userData.length < 12 ? [UserData(0, 1)] : userData,

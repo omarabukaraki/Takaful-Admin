@@ -8,8 +8,8 @@ final class GetServiceCategoryLodingState extends GetServiceCategoryState {}
 
 final class GetServiceCategorySeccState extends GetServiceCategoryState {
   List<CategoryModel> categoryList = [];
-
-  GetServiceCategorySeccState(this.categoryList);
+  List<String> serviceCategoryIdList = [];
+  GetServiceCategorySeccState(this.categoryList, this.serviceCategoryIdList);
 }
 
 final class GetServiceCategoryFaliuerState extends GetServiceCategoryState {}

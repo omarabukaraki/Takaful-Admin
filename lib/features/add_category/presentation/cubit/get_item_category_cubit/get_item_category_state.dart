@@ -8,8 +8,12 @@ final class GetItemCategoryLodingState extends GetItemCategoryState {}
 
 final class GetItemCategorySeccState extends GetItemCategoryState {
   List<CategoryModel> categoryList = [];
+  List<String> itemCategoryIdList = [];
 
-  GetItemCategorySeccState(this.categoryList);
+  GetItemCategorySeccState(
+    this.categoryList,
+    this.itemCategoryIdList,
+  );
 }
 
 final class GetItemCategoryFaliuerState extends GetItemCategoryState {}

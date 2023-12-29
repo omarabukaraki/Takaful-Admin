@@ -61,8 +61,8 @@ class ServiceCategories extends StatefulWidget {
 
 class _ServiceCategoriesState extends State<ServiceCategories> {
   bool isLoding = false;
-
   List<CategoryModel> categories = [];
+  List<String> serviceCategoryId = [];
 
   @override
   Widget build(BuildContext context) {
@@ -72,6 +72,7 @@ class _ServiceCategoriesState extends State<ServiceCategories> {
           isLoding = true;
         } else if (state is GetServiceCategorySeccState) {
           categories = state.categoryList;
+          serviceCategoryId = state.serviceCategoryIdList;
           isLoding = false;
         } else if (state is GetServiceCategoryFaliuerState) {
           isLoding = false;
@@ -99,6 +100,7 @@ class _ServiceCategoriesState extends State<ServiceCategories> {
                     itemBuilder: (context, index) {
                       return CategoryMenu(
                         type: 'service category',
+                        categoryId: serviceCategoryId[index],
                         categoryModel: categories[index],
                       );
                     },
@@ -122,7 +124,7 @@ class ItemCategories extends StatefulWidget {
 
 class _ItemCategoriesState extends State<ItemCategories> {
   bool isLodingItem = false;
-
+  List<String> itemCategoryId = [];
   List<CategoryModel> categories = [];
 
   @override
@@ -133,6 +135,7 @@ class _ItemCategoriesState extends State<ItemCategories> {
           isLodingItem = true;
         } else if (state is GetItemCategorySeccState) {
           categories = state.categoryList;
+          itemCategoryId = state.itemCategoryIdList;
           isLodingItem = false;
         } else if (state is GetItemCategoryFaliuerState) {
           isLodingItem = false;
@@ -160,6 +163,7 @@ class _ItemCategoriesState extends State<ItemCategories> {
                     itemBuilder: (context, index) {
                       return CategoryMenu(
                         type: 'category',
+                        categoryId: itemCategoryId[index],
                         categoryModel: categories[index],
                       );
                     },

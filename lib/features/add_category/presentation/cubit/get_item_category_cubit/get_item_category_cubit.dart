@@ -14,11 +14,25 @@ class GetItemCategoryCubit extends Cubit<GetItemCategoryState> {
 
     itemCategory.orderBy('createAt').snapshots().listen((event) {
       List<CategoryModel> categoryList = [];
+      List<String> itemCategoryIdList = [];
       for (var element in event.docs) {
         categoryList.add(CategoryModel.fromJson(element));
+        itemCategoryIdList.add(element.id);
       }
       categoryList.add(CategoryModel());
-      emit(GetItemCategorySeccState(categoryList));
+      itemCategoryIdList.add('');
+      emit(GetItemCategorySeccState(
+        categoryList,
+        itemCategoryIdList,
+      ));
     });
+  }
+
+  Future<void> deleteItemcategory({required String itemCategoryId}) async {
+    try {
+      await itemCategory.doc(itemCategoryId).delete();
+    } catch (e) {
+      e.toString();
+    }
   }
 }

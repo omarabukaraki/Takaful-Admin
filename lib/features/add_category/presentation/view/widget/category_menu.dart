@@ -1,9 +1,14 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:takaful_admin1/core/utils/app_colors.dart';
 import 'package:takaful_admin1/core/utils/app_strings.dart';
 import 'package:takaful_admin1/features/add_category/data/category_model.dart';
+import 'package:takaful_admin1/features/add_category/presentation/cubit/get_item_category_cubit/get_item_category_cubit.dart';
+import 'package:takaful_admin1/features/add_category/presentation/cubit/get_service_category_cubit/get_service_category_cubit.dart';
 import 'package:takaful_admin1/features/add_category/presentation/view/category_page.dart';
+
+import '../../../../manage_ad/presnentation/view/widget/custom_delete_awsome_dialog.dart';
 
 class CategoryMenu extends StatelessWidget {
   const CategoryMenu({
@@ -13,12 +18,14 @@ class CategoryMenu extends StatelessWidget {
     super.key,
     this.categoryModel,
     required this.type,
+    required this.categoryId,
   });
   final String? text;
   final String? image;
   final VoidCallback? onTap;
   final CategoryModel? categoryModel;
   final String type;
+  final String categoryId;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -69,14 +76,51 @@ class CategoryMenu extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.only(right: 80),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
+                    categoryModel?.image != null
+                        ? GestureDetector(
+                            onTap: () {
+                              customDeleteDialog(
+                                  context: context,
+                                  dialogBody: AppString.textConfirmDeletion,
+                                  btnOkOnPress: () async {
+                                    type == 'category'
+                                        ? await BlocProvider.of<
+                                                GetItemCategoryCubit>(context)
+                                            .deleteItemcategory(
+                                                itemCategoryId: categoryId)
+                                        : await BlocProvider.of<
+                                                    GetServiceCategoryCubit>(
+                                                context)
+                                            .deleteServiceCategory(
+                                                serviceCategoryId: categoryId);
+                                  }).show();
+                            },
+                            child: Container(
+                              margin: const EdgeInsets.all(12),
+                              width: 45,
+                              height: 45,
+                              decoration: const BoxDecoration(
+                                color: AppColor.kRed,
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(30),
+                                ),
+                              ),
+                              child: const Icon(
+                                Icons.delete,
+                                color: AppColor.kWhite,
+                                size: 28,
+                              ),
+                            ),
+                          )
+                        : const SizedBox(),
                     Text(
                       categoryModel?.title != null
                           ? categoryModel!.title!
                           : AppString.textAddCategory,
                       style: const TextStyle(
-                        fontSize: 30,
+                        fontSize: 25,
                         color: AppColor.kFont,
                       ),
                     ),

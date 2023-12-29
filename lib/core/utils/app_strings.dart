@@ -79,7 +79,8 @@ abstract class AppString {
   static const String successfullyRejected = 'لقد تم رفض نشر الإعلان بنجاح';
   static const String monthlyPostsAnalysis = ' احصائيات الإعلانات شهريا';
   static const String monthlyRequestsAnalysis = 'احصائيات الطلبات شهريا';
-  static const String monthlyUsersAnalysis = 'احصائيات المستخدمين شهريا';
+  static const String monthlyNewUsersAnalysis =
+      'احصائيات المستخدمين الجدد شهريا';
   static const String textMonth = 'شهر';
   static const String textView = 'عرض';
   static const String textErrorOccurredPleaseTryLater =
@@ -111,5 +112,5 @@ abstract class AppString {
   static const String textAccountDescription = 'معلومات الحساب';
   static const String textPosts = 'الإعلانات';
   static const String textRequests = 'الطلبات';
-  static const String textUsers = 'المستخدمين';
+  static const String textNewUsers = ' المستخدمين الجدد';
 }

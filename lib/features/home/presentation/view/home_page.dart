@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:takaful_admin1/core/utils/app_colors.dart';
 import 'package:takaful_admin1/core/utils/app_strings.dart';
 import 'package:takaful_admin1/features/add_category/presentation/view/add_category_page.dart';
-import 'package:takaful_admin1/features/ban_user/presentation/view/ban_user_page.dart';
 import 'package:takaful_admin1/features/delete_post/presentation/view/delete_post_page.dart';
 import 'package:takaful_admin1/features/home/presentation/view/widgets/custom_list_tile.dart';
 import 'package:takaful_admin1/features/manage_ad/presnentation/view/manage_ad_page.dart';
@@ -24,13 +23,13 @@ class _HomePageState extends State<HomePage> {
     ManagePostReqPage(),
     SendNotificationPage(),
     DeletePostPage(),
-    BanUserPage(),
+    // BanUserPage(),
     AccountVerificationRequestsPage(),
     ManageAdPage(),
     AddCategoryPage(),
     GenerateAnalyticsPage(),
   ];
-  int index = 7;
+  int index = 6;
   String appBarTitle = 'الإحصائيات';
   @override
   Widget build(BuildContext context) {
@@ -108,7 +107,8 @@ class _HomePageState extends State<HomePage> {
                 const Divider(height: 2),
                 CustomListTile(
                   title: AppString.textManageUserPosts,
-                  mainIcon: Icons.manage_accounts_outlined,
+                  isIcon: false,
+                  image: 'assets/image/post.png',
                   size: 19,
                   onTap: () {
                     setState(() {
@@ -119,7 +119,7 @@ class _HomePageState extends State<HomePage> {
                 ),
                 CustomListTile(
                   title: AppString.textSendNotiToUsers,
-                  mainIcon: Icons.manage_accounts_outlined,
+                  mainIcon: Icons.notification_add_outlined,
                   size: 19,
                   onTap: () {
                     setState(() {
@@ -130,7 +130,7 @@ class _HomePageState extends State<HomePage> {
                 ),
                 CustomListTile(
                   title: AppString.textDeletePost,
-                  mainIcon: Icons.manage_accounts_outlined,
+                  mainIcon: Icons.delete_outlined,
                   size: 19,
                   onTap: () {
                     setState(() {
@@ -139,24 +139,24 @@ class _HomePageState extends State<HomePage> {
                     });
                   },
                 ),
+                // CustomListTile(
+                //   title: AppString.textBanUser,
+                //   mainIcon: Icons.manage_accounts_outlined,
+                //   size: 19,
+                //   onTap: () {
+                //     setState(() {
+                //       index = 3;
+                //       appBarTitle = AppString.textBanUser;
+                //     });
+                //   },
+                // ),
                 CustomListTile(
-                  title: AppString.textBanUser,
-                  mainIcon: Icons.manage_accounts_outlined,
+                  title: AppString.textAccountVerificationRequest,
+                  mainIcon: Icons.verified_outlined,
                   size: 19,
                   onTap: () {
                     setState(() {
                       index = 3;
-                      appBarTitle = AppString.textBanUser;
-                    });
-                  },
-                ),
-                CustomListTile(
-                  title: AppString.textAccountVerificationRequest,
-                  mainIcon: Icons.manage_accounts_outlined,
-                  size: 19,
-                  onTap: () {
-                    setState(() {
-                      index = 4;
                       appBarTitle = AppString.textAccountVerificationRequest;
                     });
                   },
@@ -170,37 +170,40 @@ class _HomePageState extends State<HomePage> {
                   title: AppString.textManageApplication,
                   mainIcon: Icons.manage_accounts_outlined,
                   isleadingIcon: true,
+                  isIcon: false,
+                  image: 'assets/image/management-service.png',
                 ),
                 const Divider(height: 2),
                 CustomListTile(
                   title: AppString.textManageApplicationAd,
-                  mainIcon: Icons.manage_accounts_outlined,
+                  isIcon: false,
+                  image: 'assets/image/setting.png',
                   size: 19,
                   onTap: () {
                     setState(() {
-                      index = 5;
+                      index = 4;
                       appBarTitle = AppString.textManageApplicationAd;
                     });
                   },
                 ),
                 CustomListTile(
                   title: AppString.textAddCategory,
-                  mainIcon: Icons.manage_accounts_outlined,
+                  mainIcon: Icons.category_outlined,
                   size: 19,
                   onTap: () {
                     setState(() {
-                      index = 6;
+                      index = 5;
                       appBarTitle = AppString.textAddCategory;
                     });
                   },
                 ),
                 CustomListTile(
                   title: AppString.textAnalitices,
-                  mainIcon: Icons.manage_accounts_outlined,
+                  mainIcon: Icons.analytics_outlined,
                   size: 19,
                   onTap: () {
                     setState(() {
-                      index = 7;
+                      index = 6;
                       appBarTitle = AppString.textAnalitices;
                     });
                   },

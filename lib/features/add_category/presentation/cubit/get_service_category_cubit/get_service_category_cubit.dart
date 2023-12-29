@@ -14,11 +14,26 @@ class GetServiceCategoryCubit extends Cubit<GetServiceCategoryState> {
 
     serviceCategory.orderBy('createAt').snapshots().listen((event) {
       List<CategoryModel> categoryList = [];
+      List<String> serviceCategoryIdList = [];
       for (var element in event.docs) {
         categoryList.add(CategoryModel.fromJson(element));
+        serviceCategoryIdList.add(element.id);
       }
       categoryList.add(CategoryModel());
-      emit(GetServiceCategorySeccState(categoryList));
+      serviceCategoryIdList.add('');
+      emit(GetServiceCategorySeccState(
+        categoryList,
+        serviceCategoryIdList,
+      ));
     });
+  }
+
+  Future<void> deleteServiceCategory(
+      {required String serviceCategoryId}) async {
+    try {
+      await serviceCategory.doc(serviceCategoryId).delete();
+    } catch (e) {
+      e.toString();
+    }
   }
 }
