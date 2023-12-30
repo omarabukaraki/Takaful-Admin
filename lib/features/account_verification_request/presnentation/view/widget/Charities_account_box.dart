@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:takaful_admin1/features/ban_user/data/user_model.dart';
+import 'package:takaful_admin1/features/manage_post_request/presentation/views/widgets/post_details_widget/custom_rating_bar.dart';
 
 class CharitiesAccountBox extends StatelessWidget {
   const CharitiesAccountBox(
@@ -33,45 +34,26 @@ class CharitiesAccountBox extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.end,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
-                  user.name,
-                  style: const TextStyle(
-                    fontSize: 18,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  maxLines: 1,
-                ),
-                const Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Icon(
-                      Icons.star_purple500_sharp,
-                      color: Colors.yellow,
-                      size: 20,
-                    ),
-                    Icon(
-                      Icons.star_purple500_sharp,
-                      color: Colors.yellow,
-                      size: 20,
-                    ),
-                    Icon(
-                      Icons.star_purple500_sharp,
-                      color: Colors.yellow,
-                      size: 20,
-                    ),
-                    Icon(
-                      Icons.star_purple500_sharp,
-                      color: Colors.yellow,
-                      size: 20,
-                    ),
-                    Icon(
-                      Icons.star_purple500_sharp,
-                      color: Colors.yellow,
-                      size: 20,
+                    user.isVerified == true
+                        ? const Icon(Icons.verified,
+                            color: Colors.blue, size: 19)
+                        : const SizedBox(),
+                    const SizedBox(width: 5),
+                    Text(
+                      user.name,
+                      style: const TextStyle(
+                        fontSize: 18,
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      maxLines: 1,
                     ),
                   ],
                 ),
+                CustomRatingBar(usersModel: user)
               ],
             ),
           ),

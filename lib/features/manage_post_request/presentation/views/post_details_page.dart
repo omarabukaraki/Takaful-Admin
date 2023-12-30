@@ -15,6 +15,7 @@ import 'package:takaful_admin1/features/manage_post_request/presentation/views/w
 import 'package:takaful_admin1/features/manage_post_request/presentation/views/widgets/post_details_widget/post_details_information.dart';
 import 'package:takaful_admin1/features/manage_post_request/presentation/views/widgets/post_details_widget/title_post_details_page.dart';
 import 'package:takaful_admin1/features/send_notification/presentation/cubit/send_notification_cubit.dart';
+
 import '../cubits/get_user_information_cubit/get_user_information_cubit.dart';
 import '../cubits/get_user_information_cubit/get_user_information_state.dart';
 import '../cubits/manage_post_cubit/manage_post_cubit.dart';
@@ -230,7 +231,7 @@ class _PostPageState extends State<PostPage> {
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
                               const TitleDonationDetailsPage(
-                                text: AppString.textAdvertiserAccount,
+                                text: AppString.textAdvertiser,
                               ),
                               DonarAccountBox(
                                 user: user != null
@@ -244,7 +245,10 @@ class _PostPageState extends State<PostPage> {
                                         mobileNumber: '',
                                         userToken: '',
                                         createAt: 12,
-                                        isVerified: false),
+                                        isVerified: false,
+                                        numberOfRatingUsers: 0,
+                                        rating: 0,
+                                        ratingList: []),
                               ),
                             ],
                           ),

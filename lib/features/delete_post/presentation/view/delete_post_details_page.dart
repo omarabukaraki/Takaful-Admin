@@ -11,6 +11,7 @@ import 'package:takaful_admin1/features/manage_post_request/presentation/views/w
 import 'package:takaful_admin1/features/manage_post_request/presentation/views/widgets/post_details_widget/post_details_button.dart';
 import 'package:takaful_admin1/features/manage_post_request/presentation/views/widgets/post_details_widget/post_details_image.dart';
 import 'package:takaful_admin1/features/manage_post_request/presentation/views/widgets/post_details_widget/title_post_details_page.dart';
+
 import '../../../manage_post_request/presentation/cubits/get_user_information_cubit/get_user_information_cubit.dart';
 import '../../../manage_post_request/presentation/cubits/get_user_information_cubit/get_user_information_state.dart';
 import '../../../manage_post_request/presentation/views/widgets/post_details_widget/description_box.dart';
@@ -226,7 +227,7 @@ class _PostPageState extends State<DeletePostDetailsPage> {
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
                                 const TitleDonationDetailsPage(
-                                  text: AppString.textAdvertiserAccount,
+                                  text: AppString.textAdvertiser,
                                 ),
                                 DonarAccountBox(
                                     user: user != null
@@ -240,7 +241,11 @@ class _PostPageState extends State<DeletePostDetailsPage> {
                                             mobileNumber: '',
                                             userToken: '',
                                             createAt: 12,
-                                            isVerified: false)),
+                                            isVerified: false,
+                                            numberOfRatingUsers: 0,
+                                            rating: 0,
+                                            ratingList: [],
+                                          )),
                               ],
                             ),
                           ),
