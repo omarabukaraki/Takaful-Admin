@@ -5,6 +5,7 @@ import 'package:takaful_admin1/core/widget/custom_search_bar.dart';
 import 'package:takaful_admin1/features/manage_post_request/data/post_model.dart';
 import 'package:takaful_admin1/features/manage_post_request/presentation/cubits/get_post_cubit/get_post_cubit.dart';
 import 'package:takaful_admin1/features/manage_post_request/presentation/cubits/get_post_cubit/get_post_state.dart';
+
 import '../../../../core/helper/snak_bar.dart';
 import '../../../manage_post_request/presentation/views/widgets/post_widget/post_component.dart';
 import 'delete_post_details_page.dart';
