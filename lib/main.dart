@@ -8,8 +8,8 @@ import 'package:takaful_admin1/features/add_category/presentation/cubit/add_imag
 import 'package:takaful_admin1/features/add_category/presentation/cubit/get_item_category_cubit/get_item_category_cubit.dart';
 import 'package:takaful_admin1/features/add_category/presentation/cubit/get_service_category_cubit/get_service_category_cubit.dart';
 import 'package:takaful_admin1/features/auth/presentation/login_cubit/login_cubit.dart';
+import 'package:takaful_admin1/features/auth/presentation/view/login_page.dart';
 import 'package:takaful_admin1/features/generate_analitices/presentation/cubit/get_request/get_request_cubit.dart';
-import 'package:takaful_admin1/features/home/presentation/view/home_page.dart';
 import 'package:takaful_admin1/features/manage_ad/presnentation/cubit/add_ad_cubit/add_ad_cubit.dart';
 import 'package:takaful_admin1/features/manage_ad/presnentation/cubit/get_ad_cubit/get_ad_cubit.dart';
 import 'package:takaful_admin1/features/manage_post_request/presentation/cubits/get_post_cubit/get_post_cubit.dart';
@@ -54,19 +54,16 @@ class TakafulAdmin extends StatelessWidget {
         BlocProvider(create: (context) => AddAdCubit()),
       ],
       child: MaterialApp(
-          debugShowCheckedModeBanner: false,
-          title: 'Flutter Demo',
-          theme: ThemeData(
-            fontFamily: 'ElMessiri',
-            colorScheme: ColorScheme.fromSeed(
-                seedColor: AppColor.kPrimary, background: Colors.white),
-            useMaterial3: true,
-          ),
-          home: const HomePage()
-
-          // LoginPage()
-
-          ),
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          fontFamily: 'ElMessiri',
+          colorScheme: ColorScheme.fromSeed(
+              seedColor: AppColor.kPrimary, background: Colors.white),
+          useMaterial3: true,
+        ),
+        home: const LoginPage(),
+      ),
     );
   }
 }

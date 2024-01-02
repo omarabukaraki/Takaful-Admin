@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:takaful_admin1/core/helper/snak_bar.dart';
 import 'package:takaful_admin1/core/utils/app_strings.dart';
 import 'package:takaful_admin1/core/widget/custom_search_bar.dart';
-import 'package:takaful_admin1/core/widget/custom_warning_component.dart';
 import 'package:takaful_admin1/features/manage_post_request/data/post_model.dart';
 import 'package:takaful_admin1/features/manage_post_request/presentation/cubits/get_post_cubit/get_post_cubit.dart';
 import 'package:takaful_admin1/features/manage_post_request/presentation/cubits/get_post_cubit/get_post_state.dart';
@@ -61,55 +60,45 @@ class _ManagePostReqPageState extends State<ManagePostReqPage> {
 
                 //start post list
                 Expanded(
-                  child: posts.isNotEmpty
-                      ? GridView.builder(
-                          gridDelegate:
-                              const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2,
-                            childAspectRatio: 2,
+                    child: GridView.builder(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    childAspectRatio: 2,
+                  ),
+                  itemCount: posts.length,
+                  itemBuilder: (context, index) {
+                    return DonationComponent(
+                      post: posts[index],
+                      onTapRequest: () {
+                        showDialog(
+                          barrierColor: Colors.transparent,
+                          context: context,
+                          builder: (context) => Row(
+                            children: [
+                              Container(
+                                height:
+                                    MediaQuery.of(context).viewInsets.bottom ==
+                                            0
+                                        ? MediaQuery.of(context).size.height
+                                        : 0,
+                                color: Colors.amber,
+                                width: MediaQuery.of(context).size.width -
+                                    MediaQuery.of(context).size.width / 4,
+                                child: PostPage(
+                                  post: posts[index],
+                                  postId: postsId[index],
+                                ),
+                              ),
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width / 4,
+                              ),
+                            ],
                           ),
-                          itemCount: posts.length,
-                          itemBuilder: (context, index) {
-                            return DonationComponent(
-                              post: posts[index],
-                              onTapRequest: () {
-                                showDialog(
-                                  barrierColor: Colors.transparent,
-                                  context: context,
-                                  builder: (context) => Row(
-                                    children: [
-                                      Container(
-                                        height: MediaQuery.of(context)
-                                                    .viewInsets
-                                                    .bottom ==
-                                                0
-                                            ? MediaQuery.of(context).size.height
-                                            : 0,
-                                        color: Colors.amber,
-                                        width: MediaQuery.of(context)
-                                                .size
-                                                .width -
-                                            MediaQuery.of(context).size.width /
-                                                4,
-                                        child: PostPage(
-                                          post: posts[index],
-                                          postId: postsId[index],
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        width:
-                                            MediaQuery.of(context).size.width /
-                                                4,
-                                      ),
-                                    ],
-                                  ),
-                                );
-                              },
-                            );
-                          },
-                        )
-                      : const CustomWarningComponent(),
-                ),
+                        );
+                      },
+                    );
+                  },
+                )),
                 //end post list
               ],
             ),

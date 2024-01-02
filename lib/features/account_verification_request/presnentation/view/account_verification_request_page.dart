@@ -4,12 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:takaful_admin1/core/utils/app_colors.dart';
 import 'package:takaful_admin1/core/utils/app_strings.dart';
-import 'package:takaful_admin1/core/widget/custom_search_bar.dart';
 import 'package:takaful_admin1/features/account_verification_request/data/acc_verificatoin_model.dart';
 import 'package:takaful_admin1/features/manage_post_request/presentation/cubits/get_user_information_cubit/get_user_information_cubit.dart';
-
 import '../../../../core/helper/snak_bar.dart';
-import '../../../../core/widget/custom_warning_component.dart';
 import '../cubit/get_verification_requests/get_verification_requests_cubit.dart';
 import 'widget/user_component_to_verification.dart';
 
@@ -40,13 +37,6 @@ class _AccountVerificationRequestsPageState
       padding: const EdgeInsets.symmetric(horizontal: 30.0),
       child: Column(
         children: [
-          CustomSearchBar(
-            hintText: AppString.textSearchInUsers,
-            icon: const Icon(Icons.search),
-            onChanged: (searchValue) {
-              searchValueControl.text = searchValue;
-            },
-          ),
           BlocConsumer<GetVerificationRequestsCubit,
               GetVerificationRequestsState>(
             listener: (context, state) {
@@ -66,31 +56,28 @@ class _AccountVerificationRequestsPageState
             },
             builder: (context, state) {
               return Expanded(
-                child: verificationRequests.isNotEmpty
-                    ? BlurryModalProgressHUD(
-                        inAsyncCall: isLoding,
-                        progressIndicator: const SpinKitFadingCircle(
-                            color: AppColor.kPrimary, size: 90.0),
-                        dismissible: false,
-                        opacity: 0.4,
-                        child: GridView.builder(
-                          gridDelegate:
-                              const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2,
-                            childAspectRatio: 2,
-                          ),
-                          itemCount: verificationRequests.length,
-                          itemBuilder: (context, index) {
-                            return userComponentProcess(
-                                context: context,
-                                index: index,
-                                verificationRequest:
-                                    verificationRequests[index],
-                                docId: docsId[index]);
-                          },
-                        ),
-                      )
-                    : const CustomWarningComponent(),
+                child: BlurryModalProgressHUD(
+                  inAsyncCall: isLoding,
+                  progressIndicator: const SpinKitFadingCircle(
+                      color: AppColor.kPrimary, size: 90.0),
+                  dismissible: false,
+                  opacity: 0.4,
+                  child: GridView.builder(
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      childAspectRatio: 2,
+                    ),
+                    itemCount: verificationRequests.length,
+                    itemBuilder: (context, index) {
+                      return userComponentProcess(
+                          context: context,
+                          index: index,
+                          verificationRequest: verificationRequests[index],
+                          docId: docsId[index]);
+                    },
+                  ),
+                ),
               );
             },
           ),

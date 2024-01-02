@@ -70,7 +70,7 @@ abstract class AppString {
   static const String textManageCategories = 'إدارة الأقسام';
   static const String textAddCategory = 'إضافة قسم';
   static const String textAnalitices = 'الإحصائيات';
-  static const String textSearchInPosts = 'إبحث في التبرعات';
+  static const String textSearchInPosts = 'إبحث في الإعلانات';
   static const String textNotiDetails = 'تفاصيل الإشعار';
   static const String textNotiTitle = 'عنوان الإشعار';
   static const String textNotiDescription = 'وصف الإشعار';

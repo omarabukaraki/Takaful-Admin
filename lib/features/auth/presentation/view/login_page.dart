@@ -11,6 +11,8 @@ import 'package:takaful_admin1/core/widget/logo_takaful.dart';
 import 'package:takaful_admin1/features/auth/presentation/login_cubit/login_cubit.dart';
 import 'package:takaful_admin1/features/home/presentation/view/home_page.dart';
 
+import 'widget/custom_text_field_for_email.dart';
+
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
@@ -88,7 +90,7 @@ class _LoginPageState extends State<LoginPage> {
                 const SizedBox(
                   height: 10,
                 ),
-                CustomTextFiled(
+                CustomTextFiledForEmail(
                   hintText: AppString.textEmailArabic,
                   onChanged: (emailAddress) {
                     email.text = emailAddress;

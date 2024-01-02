@@ -16,18 +16,20 @@ class _GenerateAnalyticsPageState extends State<GenerateAnalyticsPage> {
     return const Scaffold(
         body: Padding(
       padding: EdgeInsets.all(8.0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          MonthlyPostAnalysisComponent(),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              MonthlyRequestAnalysisComponent(),
-              MonthlyUsersAnalysisComponent(),
-            ],
-          ),
-        ],
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            MonthlyPostAnalysisComponent(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                MonthlyRequestAnalysisComponent(),
+                MonthlyUsersAnalysisComponent(),
+              ],
+            ),
+          ],
+        ),
       ),
     ));
   }
