@@ -119,7 +119,7 @@ class _CategoryPageState extends State<CategoryPage> {
                 child: CustomButton(
                   textColor: AppColor.kWhite,
                   color: AppColor.kPrimary,
-                  text: AppString.textManageCategories,
+                  text: AppString.textAddCategory,
                   onTap: () async {
                     if (imageUrl != null) {
                       if (formKey.currentState!.validate()) {

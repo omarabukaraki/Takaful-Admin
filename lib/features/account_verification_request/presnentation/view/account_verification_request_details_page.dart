@@ -121,9 +121,13 @@ class AccountVerificationRequestDetailsPage extends StatelessWidget {
                           height: 75,
                           horizontalPadding: double.infinity,
                           textColor: AppColor.kWhite,
-                          color: AppColor.kRed,
-                          text: AppString.textRefuseToAuthenticate,
+                          color: AppColor.kPrimary,
+                          text: AppString.textAccountVerification,
                           onTap: () async {
+                            await BlocProvider.of<
+                                    ManageVerificationAccountCubit>(context)
+                                .acceptVerification(userId: user.id);
+                            // ignore: use_build_context_synchronously
                             await BlocProvider.of<
                                     ManageVerificationAccountCubit>(context)
                                 .rejectVerification(documentId: docId);
@@ -138,13 +142,9 @@ class AccountVerificationRequestDetailsPage extends StatelessWidget {
                           height: 75,
                           horizontalPadding: double.infinity,
                           textColor: AppColor.kWhite,
-                          color: AppColor.kPrimary,
-                          text: AppString.textAccountVerification,
+                          color: AppColor.kRed,
+                          text: AppString.textRefuseToAuthenticate,
                           onTap: () async {
-                            await BlocProvider.of<
-                                    ManageVerificationAccountCubit>(context)
-                                .acceptVerification(userId: user.id);
-                            // ignore: use_build_context_synchronously
                             await BlocProvider.of<
                                     ManageVerificationAccountCubit>(context)
                                 .rejectVerification(documentId: docId);
